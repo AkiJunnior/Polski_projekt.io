@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 1: Dom i rodzina | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Додаткові стилі для сторінки теми */
+        .topic-page {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .topic-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .topic-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .topic-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .topic-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid #4CAF50;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Стилі для словника */
+        .vocabulary-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E8F5E9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .vocab-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s;
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.15);
+        }
+        
+        .polish-word {
+            color: #2E7D32;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .ukrainian-word {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .example {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .translation {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Стилі для відео */
+        .video-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .video-container {
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .video-link:hover {
+            background: #388E3C;
+        }
+        
+        .video-note {
+            background: #E8F5E9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        /* Стилі для вправ */
+        .exercise-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .exercise-title {
+            color: #2E7D32;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-question {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Стилі для випадаючих меню */
+        .answer-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .answer-select.correct {
+            border-color: #4CAF50;
+            background-color: #E8F5E9;
+        }
+        
+        .answer-select.incorrect {
+            border-color: #f44336;
+            background-color: #FFEBEE;
+        }
+        
+        .answer-select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        /* Стилі для перемикачів (радіо) */
+        .radio-options {
+            margin-bottom: 15px;
+        }
+        
+        .radio-option {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .radio-option:hover {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+        }
+        
+        .radio-option.correct {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+            color: #2E7D32;
+        }
+        
+        .radio-option.incorrect {
+            background: #FFEBEE;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        
+        .radio-option input {
+            margin-right: 10px;
+        }
+        
+        /* Блок з правильною відповіддю */
+        .correct-answer {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        
+        .correct-answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Кнопка для перевірки відповіді */
+        .check-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .check-btn:hover {
+            background: #388E3C;
+        }
+        
+        .check-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Кнопка для перегляду відповіді */
+        .show-answer-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .show-answer-btn:hover {
+            background: #1976D2;
+        }
+        
+        /* Результат перевірки */
+        .result-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-message.correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+        
+        .result-message.incorrect {
+            background: #FFEBEE;
+            color: #c62828;
+            border: 1px solid #FFCDD2;
+        }
+        
+        /* Додаткові матеріали */
+        .resources-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .resource-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateX(5px);
+            background: #E8F5E9;
+        }
+        
+        .resource-card i {
+            color: #4CAF50;
+            font-size: 1.5rem;
+        }
+        
+        .topic-footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        .counter {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* Стилі для правильної відповіді */
+        .answer-highlight {
+            color: #2E7D32;
+            font-weight: bold;
+            background: #C8E6C9;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        /* Блок для статистики */
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 15px;
+            background: #F5F5F5;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <!-- Заголовок теми -->
+            <header class="topic-header">
+                <h1><i class="fas fa-home"></i> Temat 1: Dom i rodzina</h1>
+                <p class="subtitle">Słownictwo związane z mieszkaniem, rodziną i życiem domowym</p>
+                <div class="counter">Temat 1 z 26 | Dział: Leksyka</div>
+            </header>
+            
+            <!-- Навігація -->
+            <nav class="topic-nav">
+                <a href="index.html" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Powrót do menu
+                </a>
+                <a href="temat2.html" class="nav-button">
+                    Następny temat <i class="fas fa-arrow-right"></i>
+                </a>
+            </nav>
+            
+            <!-- Основний контент -->
+            <div class="content-grid">
+                <!-- Ліва колонка -->
+                <div class="left-column">
+                    <!-- Словник -->
+                    <section class="vocabulary-section">
+                        <h2 class="section-title"><i class="fas fa-book"></i> Słownik tematyczny</h2>
+                        
+                        <div class="vocabulary-grid">
+                            <!-- Слова про дім -->
+                            <div class="vocab-card">
+                                <div class="polish-word">dom</div>
+                                <div class="ukrainian-word">дім</div>
+                                <div class="example">Mieszkam w dużym domu.</div>
+                                <div class="translation">Я живу у великому домі.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">mieszkanie</div>
+                                <div class="ukrainian-word">квартира</div>
+                                <div class="example">To nowe mieszkanie.</div>
+                                <div class="translation">Це нова квартира.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">pokój</div>
+                                <div class="ukrainian-word">кімната</div>
+                                <div class="example">Mój pokój jest duży.</div>
+                                <div class="translation">Моя кімната велика.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">kuchnia</div>
+                                <div class="ukrainian-word">кухня</div>
+                                <div class="example">Gotuję w kuchni.</div>
+                                <div class="translation">Я готую на кухні.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">łazienka</div>
+                                <div class="ukrainian-word">ванна кімната</div>
+                                <div class="example">Łazienka jest czysta.</div>
+                                <div class="translation">Ванна кімната чиста.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">sypialnia</div>
+                                <div class="ukrainian-word">спальня</div>
+                                <div class="example">Śpię w sypialni.</div>
+                                <div class="translation">Я сплю у спальні.</div>
+                            </div>
+                            
+                            <!-- Слова про родину -->
+                            <div class="vocab-card">
+                                <div class="polish-word">rodzina</div>
+                                <div class="ukrainian-word">родина</div>
+                                <div class="example">Mam dużą rodzinę.</div>
+                                <div class="translation">У мене велика родина.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">matka / mama</div>
+                                <div class="ukrainian-word">мати / мама</div>
+                                <div class="example">Moja mama gotuje.</div>
+                                <div class="translation">Моя мама готує.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">ojciec / tata</div>
+                                <div class="ukrainian-word">батько / тато</div>
+                                <div class="example">Mój tata pracuje.</div>
+                                <div class="translation">Мій тато працює.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">brat</div>
+                                <div class="ukrainian-word">брат</div>
+                                <div class="example">Mam młodszego brata.</div>
+                                <div class="translation">У мене є молодший брат.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">siostra</div>
+                                <div class="ukrainian-word">сестра</div>
+                                <div class="example">Moja siostra uczy się.</div>
+                                <div class="translation">Моя сестра вчиться.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">dziadek</div>
+                                <div class="ukrainian-word">дідусь</div>
+                                <div class="example">Mój dziadek opowiada historie.</div>
+                                <div class="translation">Мій дідусь розповідає історії.</div>
+                            </div>
+                            
+                            <!-- Слова про меблі -->
+                            <div class="vocab-card">
+                                <div class="polish-word">meble</div>
+                                <div class="ukrainian-word">меблі</div>
+                                <div class="example">Kupujemy nowe meble.</div>
+                                <div class="translation">Ми купуємо нові меблі.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">łóżko</div>
+                                <div class="ukrainian-word">ліжко</div>
+                                <div class="example">Łóżko jest wygodne.</div>
+                                <div class="translation">Ліжко зручне.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">stół</div>
+                                <div class="ukrainian-word">стіл</div>
+                                <div class="example">Jemy przy stole.</div>
+                                <div class="translation">Ми їмо за столом.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">krzesło</div>
+                                <div class="ukrainian-word">стілець</div>
+                                <div class="example">Krzesło jest twarde.</div>
+                                <div class="translation">Стілець твердий.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Wskazówka:</strong> Ucz się 5-10 słów dziennie. Powtarzaj je na głos i próbuj używać w zdaniach.</p>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Права колонка -->
+                <div class="right-column">
+                    <!-- Відео -->
+                    <section class="video-section">
+                        <h2 class="section-title"><i class="fas fa-video"></i> Materiał wideo</h2>
+                        
+                        <p>Obejrzyj wideo, aby lepiej zrozumieć temat i usłyszeć poprawną wymowę:</p>
+                        
+                        <div class="video-container">
+                            <i class="fas fa-play-circle" style="font-size: 3rem; color: #4CAF50; margin-bottom: 15px;"></i>
+                            <p><strong>Dom i rodzina - słownictwo po polsku</strong></p>
+                            <p>Podstawowe słowa związane z domem i rodziną</p>
+                            
+                            <!-- Ваше посилання на YouTube -->
+                            <a href="https://www.youtube.com/watch?v=fDWNQcMq8d4" target="_blank" class="video-link">
+                                <i class="fab fa-youtube"></i> Obejrzyj wideo na YouTube
+                            </a>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Jak korzystać z wideo:</strong></p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Oglądaj z włączonymi napisami</li>
+                                <li>Powtarzaj słowa za lektorem</li>
+                                <li>Zatrzymuj wideo i notuj nowe słowa</li>
+                                <li>Wróć do trudnych fragmentów</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <!-- Вправи -->
+                    <section class="exercise-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <p>Wykonaj ćwiczenia, aby utrwalić słownictwo. Sprawdź swoją wiedzę!</p>
+                        
+                        <!-- Статистика -->
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="correctCount">0</div>
+                                <div class="stat-label">Poprawne</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalCount">0</div>
+                                <div class="stat-label">Wykonane</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="percentage">0%</div>
+                                <div class="stat-label">Skuteczność</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 1: Випадаюче меню -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 1: Wybierz poprawne tłumaczenie</h3>
+                            <p class="exercise-question">Jak po polsku powiesz <strong>"дім"</strong>?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="mieszkanie">mieszkanie</option>
+                                <option value="dom">dom</option>
+                                <option value="pokój">pokój</option>
+                                <option value="budynek">budynek</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(1)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                            
+                            <div class="correct-answer" id="answer1">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">dom</span></p>
+                                <p><strong>Przykład:</strong> Mieszkam w dużym <span class="answer-highlight">domu</span>.</p>
+                                <p><strong>Wyjaśnienie:</strong> Słowo "dom" oznacza budynek mieszkalny, w którym żyje rodzina.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 2: Випадаюче меню -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 2: Uzupełnij zdanie</h3>
+                            <p class="exercise-question">Mieszkam w dużym ________ z moją rodziną.</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="mieszkaniu">mieszkaniu</option>
+                                <option value="domu">domu</option>
+                                <option value="pokoju">pokoju</option>
+                                <option value="bloku">bloku</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(2)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                            
+                            <div class="correct-answer" id="answer2">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">domu</span></p>
+                                <p><strong>Pełne zdanie:</strong> Mieszkam w dużym <span class="answer-highlight">domu</span> z moją rodziną.</p>
+                                <p><strong>Wyjaśnienie:</strong> Forma "domu" to celownik (miejscownik) od słowa "dom". Używamy go po przyimku "w".</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 3: Радіо кнопки -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-check-circle"></i> Ćwiczenie 3: Wybierz właściwą odpowiedź</h3>
+                            <p class="exercise-question">Które słowo oznacza "кухня" po polsku?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option3a">
+                                    <input type="radio" name="q3" value="łazienka">
+                                    łazienka
+                                </label>
+                                <label class="radio-option" id="option3b">
+                                    <input type="radio" name="q3" value="kuchnia">
+                                    kuchnia
+                                </label>
+                                <label class="radio-option" id="option3c">
+                                    <input type="radio" name="q3" value="sypialnia">
+                                    sypialnia
+                                </label>
+                                <label class="radio-option" id="option3d">
+                                    <input type="radio" name="q3" value="salon">
+                                    salon
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(3)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                            
+                            <div class="correct-answer" id="answer3">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">kuchnia</span></p>
+                                <p><strong>Przykład:</strong> Gotuję obiad w <span class="answer-highlight">kuchni</span>.</p>
+                                <p><strong>Inne pomieszczenia:</strong>
+                                    <br>• łazienka = ванна кімната
+                                    <br>• sypialnia = спальня
+                                    <br>• salon = вітальня
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 4: Радіо кнопки -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-users"></i> Ćwiczenie 4: Członkowie rodziny</h3>
+                            <p class="exercise-question">Jak po polsku powiesz "сестра"?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option4a">
+                                    <input type="radio" name="q4" value="brat">
+                                    brat
+                                </label>
+                                <label class="radio-option" id="option4b">
+                                    <input type="radio" name="q4" value="siostra">
+                                    siostra
+                                </label>
+                                <label class="radio-option" id="option4c">
+                                    <input type="radio" name="q4" value="matka">
+                                    matka
+                                </label>
+                                <label class="radio-option" id="option4d">
+                                    <input type="radio" name="q4" value="ojciec">
+                                    ojciec
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(4)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(4)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result4"></div>
+                            
+                            <div class="correct-answer" id="answer4">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">siostra</span></p>
+                                <p><strong>Przykład:</strong> Moja <span class="answer-highlight">siostra</span> ma 10 lat.</p>
+                                <p><strong>Inni członkowie rodziny:</strong>
+                                    <br>• brat = брат
+                                    <br>• matka = мати
+                                    <br>• ojciec = батько
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Додаткові матеріали -->
+                    <section class="resources-section">
+                        <h2 class="section-title"><i class="fas fa-external-link-alt"></i> Dodatkowe materiały</h2>
+                        
+                        <a href="https://pl.wiktionary.org" target="_blank" class="resource-card">
+                            <i class="fas fa-book-open"></i>
+                            <div>
+                                <strong>Wiktionary</strong>
+                                <p>Słownik polsko-ukraiński online</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://forvo.com/languages/pl/" target="_blank" class="resource-card">
+                            <i class="fas fa-volume-up"></i>
+                            <div>
+                                <strong>Forvo</strong>
+                                <p>Wymowa polskich słów</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.polskijazyk.pl" target="_blank" class="resource-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>PolskiJęzyk.pl</strong>
+                                <p>Darmowe lekcje polskiego</p>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Футер теми -->
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 1: Dom i rodzina</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "dom",
+            2: "domu",
+            3: "kuchnia",
+            4: "siostra"
+        };
+        
+        // Статистика
+        let stats = {
+            total: 0,
+            correct: 0,
+            completed: []
+        };
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            let userAnswer;
+            let isCorrect = false;
+            
+            // Отримуємо відповідь користувача
+            if (exerciseNum <= 2) {
+                // Для випадаючих меню
+                userAnswer = selectElement.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                // Змінюємо стиль випадаючого списку
+                selectElement.classList.remove('correct', 'incorrect');
+                selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+            } else {
+                // Для радіо-кнопок
+                const selectedRadio = document.querySelector(`input[name="q${exerciseNum}"]:checked`);
+                if (!selectedRadio) {
+                    resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                    resultElement.className = 'result-message incorrect';
+                    resultElement.style.display = 'block';
+                    return;
+                }
+                
+                userAnswer = selectedRadio.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                // Змінюємо стиль всіх варіантів
+                const options = document.querySelectorAll(`.radio-option input[name="q${exerciseNum}"]`);
+                options.forEach(option => {
+                    const parentLabel = option.parentElement;
+                    parentLabel.classList.remove('correct', 'incorrect');
+                    
+                    if (option.value === correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('correct');
+                    } else if (option.checked && option.value !== correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('incorrect');
+                    }
+                });
+            }
+            
+            // Показуємо результат
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Dobra robota!`;
+                resultElement.className = 'result-message correct';
+                
+                // Оновлюємо статистику тільки якщо ця вправа ще не була виконана
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.correct++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+                
+                // Оновлюємо статистику тільки якщо ця вправа ще не була виконана
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            }
+            
+            resultElement.style.display = 'block';
+            
+            // Прокручуємо до результату
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Анімація
+            resultElement.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 100);
+            
+            // Зберігаємо прогрес
+            saveProgress();
+        }
+        
+        // Функція для показу правильної відповіді
+        function showAnswer(exerciseNum) {
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            // Ховаємо всі відповіді
+            document.querySelectorAll('.correct-answer').forEach(el => {
+                el.classList.remove('show');
+            });
+            
+            // Показуємо потрібну відповідь
+            answerElement.classList.add('show');
+            
+            // Прокручуємо до відповіді
+            answerElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+        
+        // Функція для оновлення статистики
+        function updateStats() {
+            document.getElementById('correctCount').textContent = stats.correct;
+            document.getElementById('totalCount').textContent = stats.total;
+            
+            const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+            document.getElementById('percentage').textContent = `${percentage}%`;
+            
+            // Змінюємо колір відсотків
+            const percentageElement = document.getElementById('percentage');
+            if (percentage >= 80) {
+                percentageElement.style.color = '#4CAF50';
+            } else if (percentage >= 50) {
+                percentageElement.style.color = '#FF9800';
+            } else {
+                percentageElement.style.color = '#f44336';
+            }
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    // Скидаємо стилі при зміні відповіді
+                    this.classList.remove('correct', 'incorrect');
+                    
+                    // Ховаємо попередні результати
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Додаємо обробники для радіо-кнопок
+            const radioOptions = document.querySelectorAll('.radio-option input');
+            radioOptions.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Скидаємо стилі всіх варіантів
+                    const options = document.querySelectorAll(`.radio-option input[name="${this.name}"]`);
+                    options.forEach(option => {
+                        option.parentElement.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Ховаємо попередні результати
+                    const exerciseNum = this.name.replace('q', '');
+                    const resultElement = document.getElementById(`result${exerciseNum}`);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Додаємо анімацію при завантаженні
+            const vocabCards = document.querySelectorAll('.vocab-card');
+            vocabCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + index * 50);
+            });
+            
+            // Додаємо ефект при наведенні на варіанти відповідей
+            const exerciseCards = document.querySelectorAll('.exercise-card');
+            exerciseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // Завантажуємо збережений прогрес
+            loadProgress();
+        });
+        
+        // Функція для збереження прогресу
+        function saveProgress() {
+            const progress = {
+                stats: stats,
+                answers: {}
+            };
+            
+            // Зберігаємо вибрані відповіді
+            for (let i = 1; i <= 4; i++) {
+                if (i <= 2) {
+                    const select = document.getElementById(`select${i}`);
+                    progress.answers[i] = select.value;
+                } else {
+                    const selectedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+                    progress.answers[i] = selectedRadio ? selectedRadio.value : '';
+                }
+            }
+            
+            localStorage.setItem(`temat1_progress`, JSON.stringify(progress));
+        }
+        
+        // Функція для завантаження прогресу
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(`temat1_progress`);
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    
+                    // Відновлюємо статистику
+                    if (progress.stats) {
+                        stats = progress.stats;
+                        updateStats();
+                    }
+                    
+                    // Відновлюємо вибрані відповіді
+                    if (progress.answers) {
+                        for (let i = 1; i <= 4; i++) {
+                            if (progress.answers[i]) {
+                                if (i <= 2) {
+                                    const select = document.getElementById(`select${i}`);
+                                    select.value = progress.answers[i];
+                                    
+                                    // Відновлюємо стилі для правильно/неправильно вибраних відповідей
+                                    if (stats.completed.includes(i)) {
+                                        select.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                    }
+                                } else {
+                                    const radio = document.querySelector(`input[name="q${i}"][value="${progress.answers[i]}"]`);
+                                    if (radio) {
+                                        radio.checked = true;
+                                        
+                                        // Відновлюємо стилі для правильно/неправильно вибраних відповідей
+                                        if (stats.completed.includes(i)) {
+                                            const parentLabel = radio.parentElement;
+                                            parentLabel.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                            
+                                            // Також показуємо правильні відповіді для неправильних варіантів
+                                            if (progress.answers[i] !== correctAnswers[i]) {
+                                                const correctRadio = document.querySelector(`input[name="q${i}"][value="${correctAnswers[i]}"]`);
+                                                if (correctRadio) {
+                                                    correctRadio.parentElement.classList.add('correct');
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    console.log('Załadowano zapisany postęp z tematu 1');
+                } catch (e) {
+                    console.log('Nie można załadować zapisanego postępu');
+                }
+            }
+        }
+        
+        // Автоматично зберігаємо прогрес при зміні відповідей
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('.answer-select, input[type="radio"]')) {
+                saveProgress();
+            }
+        });
+        
+
+    </script>
+</body>
+</html>

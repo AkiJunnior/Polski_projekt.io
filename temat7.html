@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 7: Sport i hobby | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Додаткові стилі для сторінки теми */
+        .topic-page {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .topic-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .topic-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .topic-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .topic-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid #4CAF50;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Стилі для словника */
+        .vocabulary-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E8F5E9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .vocab-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s;
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.15);
+        }
+        
+        .polish-word {
+            color: #2E7D32;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .ukrainian-word {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .example {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .translation {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Стилі для відео */
+        .video-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .video-container {
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .video-link:hover {
+            background: #388E3C;
+        }
+        
+        .video-note {
+            background: #E8F5E9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        /* Стилі для вправ */
+        .exercise-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .exercise-title {
+            color: #2E7D32;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-question {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Стилі для випадаючих меню */
+        .answer-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .answer-select.correct {
+            border-color: #4CAF50;
+            background-color: #E8F5E9;
+        }
+        
+        .answer-select.incorrect {
+            border-color: #f44336;
+            background-color: #FFEBEE;
+        }
+        
+        .answer-select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        /* Стилі для перемикачів (радіо) */
+        .radio-options {
+            margin-bottom: 15px;
+        }
+        
+        .radio-option {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .radio-option:hover {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+        }
+        
+        .radio-option.correct {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+            color: #2E7D32;
+        }
+        
+        .radio-option.incorrect {
+            background: #FFEBEE;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        
+        .radio-option input {
+            margin-right: 10px;
+        }
+        
+        /* Блок з правильною відповіддю */
+        .correct-answer {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        
+        .correct-answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Кнопка для перевірки відповіді */
+        .check-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .check-btn:hover {
+            background: #388E3C;
+        }
+        
+        .check-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Кнопка для перегляду відповіді */
+        .show-answer-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .show-answer-btn:hover {
+            background: #1976D2;
+        }
+        
+        /* Результат перевірки */
+        .result-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-message.correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+        
+        .result-message.incorrect {
+            background: #FFEBEE;
+            color: #c62828;
+            border: 1px solid #FFCDD2;
+        }
+        
+        /* Додаткові матеріали */
+        .resources-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .resource-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateX(5px);
+            background: #E8F5E9;
+        }
+        
+        .resource-card i {
+            color: #4CAF50;
+            font-size: 1.5rem;
+        }
+        
+        .topic-footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        .counter {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* Стилі для правильної відповіді */
+        .answer-highlight {
+            color: #2E7D32;
+            font-weight: bold;
+            background: #C8E6C9;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        /* Блок для статистики */
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 15px;
+            background: #F5F5F5;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-futbol"></i> Temat 7: Sport i hobby</h1>
+                <p class="subtitle">Słownictwo związane ze sportem, aktywnościami fizycznymi i zainteresowaniami</p>
+                <div class="counter">Temat 7 z 26 | Dział: Leksyka</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="index.html" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Powrót do menu
+                </a>
+                <a href="temat8.html" class="nav-button">
+                    Następny temat <i class="fas fa-arrow-right"></i>
+                </a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="vocabulary-section">
+                        <h2 class="section-title"><i class="fas fa-book"></i> Słownik tematyczny</h2>
+                        
+                        <div class="vocabulary-grid">
+                            <!-- Спорт -->
+                            <div class="vocab-card">
+                                <div class="polish-word">sport</div>
+                                <div class="ukrainian-word">спорт</div>
+                                <div class="example">Uprawiam sport codziennie.</div>
+                                <div class="translation">Я займаюся спортом щодня.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">piłka nożna</div>
+                                <div class="ukrainian-word">футбол</div>
+                                <div class="example">Gram w piłkę nożną.</div>
+                                <div class="translation">Я граю у футбол.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">koszykówka</div>
+                                <div class="ukrainian-word">баскетбол</div>
+                                <div class="example">Koszykówka to mój ulubiony sport.</div>
+                                <div class="translation">Баскетбол - мій улюблений вид спорту.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">basen</div>
+                                <div class="ukrainian-word">басейн</div>
+                                <div class="example">Chodzę na basen w soboty.</div>
+                                <div class="translation">Я ходжу в басейн по суботах.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">biegać</div>
+                                <div class="ukrainian-word">бігати</div>
+                                <div class="example">Biegam rano w parku.</div>
+                                <div class="translation">Я бігаю вранці в парку.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">rower</div>
+                                <div class="ukrainian-word">велосипед</div>
+                                <div class="example">Jadę rowerem do pracy.</div>
+                                <div class="translation">Я їжджу на велосипеді на роботу.</div>
+                            </div>
+                            
+                            <!-- Хобі -->
+                            <div class="vocab-card">
+                                <div class="polish-word">hobby</div>
+                                <div class="ukrainian-word">хобі</div>
+                                <div class="example">Moje hobby to fotografia.</div>
+                                <div class="translation">Моє хобі - фотографія.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">książka</div>
+                                <div class="ukrainian-word">книга</div>
+                                <div class="example">Czytam książki wieczorem.</div>
+                                <div class="translation">Я читаю книги ввечері.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">muzyka</div>
+                                <div class="ukrainian-word">музика</div>
+                                <div class="example">Słucham muzyki rockowej.</div>
+                                <div class="translation">Я слухаю рок-музику.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">film</div>
+                                <div class="ukrainian-word">фільм</div>
+                                <div class="example">Oglądam filmy w weekend.</div>
+                                <div class="translation">Я дивлюся фільми на вихідних.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">gra</div>
+                                <div class="ukrainian-word">гра</div>
+                                <div class="example">Gram w gry komputerowe.</div>
+                                <div class="translation">Я граю в комп'ютерні ігри.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">fotografia</div>
+                                <div class="ukrainian-word">фотографія</div>
+                                <div class="example">Lubię fotografować przyrodę.</div>
+                                <div class="translation">Мені подобається фотографувати природу.</div>
+                            </div>
+                            
+                            <!-- Дієслова -->
+                            <div class="vocab-card">
+                                <div class="polish-word">grać</div>
+                                <div class="ukrainian-word">грати</div>
+                                <div class="example">Gram na gitarze.</div>
+                                <div class="translation">Я граю на гітарі.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">pływać</div>
+                                <div class="ukrainian-word">плавати</div>
+                                <div class="example">Umiem pływać.</div>
+                                <div class="translation">Я вмію плавати.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">czytać</div>
+                                <div class="ukrainian-word">читати</div>
+                                <div class="example">Czytam gazetę.</div>
+                                <div class="translation">Я читаю газету.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">oglądać</div>
+                                <div class="ukrainian-word">дивитися</div>
+                                <div class="example">Oglądam telewizję.</div>
+                                <div class="translation">Я дивлюся телевізор.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Wskazówka:</strong> Łącz słówka z działaniami! Na przykład, nie tylko naucz się słowa "biegać", ale też powiedz "Ja biegam rano".</p>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="video-section">
+                        <h2 class="section-title"><i class="fas fa-video"></i> Materiał wideo</h2>
+                        
+                        <p>Obejrzyj wideo, aby poznać więcej słówek i wyrażeń związanych ze sportem i hobby:</p>
+                        
+                        <div class="video-container">
+                            <i class="fas fa-play-circle" style="font-size: 3rem; color: #4CAF50; margin-bottom: 15px;"></i>
+                            <p><strong>Sport i hobby - nauka języka polskiego</strong></p>
+                            <p>Słownictwo związane ze sportem i zainteresowaniami</p>
+                            
+                            <a href="https://www.youtube.com/watch?v=JnfUtdJkLbo" target="_blank" class="video-link">
+                                <i class="fab fa-youtube"></i> Obejrzyj wideo na YouTube
+                            </a>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Jak korzystać z wideo:</strong></p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Zatrzymuj wideo i powtarzaj nowe słówka</li>
+                                <li>Zwracaj uwagę na wymowę trudniejszych wyrazów</li>
+                                <li>Zapisuj zdania, które słyszysz</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="exercise-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <p>Wykonaj ćwiczenia, aby utrwalić słownictwo związane ze sportem i hobby.</p>
+                        
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="correctCount">0</div>
+                                <div class="stat-label">Poprawne</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalCount">0</div>
+                                <div class="stat-label">Wykonane</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="percentage">0%</div>
+                                <div class="stat-label">Skuteczność</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 1 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 1: Wybierz poprawne tłumaczenie</h3>
+                            <p class="exercise-question">Jak po polsku powiesz <strong>"плавати"</strong>?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="biegać">biegać</option>
+                                <option value="pływać">pływać</option>
+                                <option value="grać">grać</option>
+                                <option value="skakać">skakać</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(1)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                            
+                            <div class="correct-answer" id="answer1">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">pływać</span></p>
+                                <p><strong>Przykład:</strong> Dzieci lubią <span class="answer-highlight">pływać</span> w basenie.</p>
+                                <p><strong>Wyjaśnienie:</strong> Czasownik "pływać" oznacza poruszanie się w wodzie.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 2 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 2: Uzupełnij zdanie</h3>
+                            <p class="exercise-question">Moje ulubione ________ to piłka nożna.</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="zajęcie">zajęcie</option>
+                                <option value="sport">sport</option>
+                                <option value="gra">gra</option>
+                                <option value="hobby">hobby</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(2)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                            
+                            <div class="correct-answer" id="answer2">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">sport</span></p>
+                                <p><strong>Pełne zdanie:</strong> Moje ulubione <span class="answer-highlight">sport</span> to piłka nożna.</p>
+                                <p><strong>Wyjaśnienie:</strong> Piłka nożna to dyscyplina sportowa, więc pasuje tu słowo "sport".</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 3 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-check-circle"></i> Ćwiczenie 3: Wybierz właściwą odpowiedź</h3>
+                            <p class="exercise-question">Co oznacza słowo "hobby" po polsku?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option3a">
+                                    <input type="radio" name="q3" value="praca">
+                                    praca
+                                </label>
+                                <label class="radio-option" id="option3b">
+                                    <input type="radio" name="q3" value="nauka">
+                                    nauka
+                                </label>
+                                <label class="radio-option" id="option3c">
+                                    <input type="radio" name="q3" value="zainteresowanie">
+                                    zainteresowanie
+                                </label>
+                                <label class="radio-option" id="option3d">
+                                    <input type="radio" name="q3" value="sport">
+                                    sport
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(3)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                            
+                            <div class="correct-answer" id="answer3">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">zainteresowanie</span></p>
+                                <p><strong>Przykład:</strong> Moje <span class="answer-highlight">hobby</span> to czytanie książek.</p>
+                                <p><strong>Wyjaśnienie:</strong> "Hobby" to zajęcie wykonywane dla przyjemności w wolnym czasie.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 4 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-futbol"></i> Ćwiczenie 4: Działania sportowe</h3>
+                            <p class="exercise-question">Które słowo oznacza "бігати" po polsku?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option4a">
+                                    <input type="radio" name="q4" value="pływać">
+                                    pływać
+                                </label>
+                                <label class="radio-option" id="option4b">
+                                    <input type="radio" name="q4" value="skakać">
+                                    skakać
+                                </label>
+                                <label class="radio-option" id="option4c">
+                                    <input type="radio" name="q4" value="biegać">
+                                    biegać
+                                </label>
+                                <label class="radio-option" id="option4d">
+                                    <input type="radio" name="q4" value="chodzić">
+                                    chodzić
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(4)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(4)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result4"></div>
+                            
+                            <div class="correct-answer" id="answer4">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">biegać</span></p>
+                                <p><strong>Przykład:</strong> <span class="answer-highlight">Biegam</span> codziennie rano dla zdrowia.</p>
+                                <p><strong>Inne aktywne czasowniki:</strong>
+                                    <br>• pływać = плавати
+                                    <br>• skakać = стрибати
+                                    <br>• chodzić = ходити
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="resources-section">
+                        <h2 class="section-title"><i class="fas fa-external-link-alt"></i> Dodatkowe materiały</h2>
+                        
+                        <a href="https://pl.wiktionary.org" target="_blank" class="resource-card">
+                            <i class="fas fa-book-open"></i>
+                            <div>
+                                <strong>Wiktionary</strong>
+                                <p>Słownik polsko-ukraiński online</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://forvo.com/languages/pl/" target="_blank" class="resource-card">
+                            <i class="fas fa-volume-up"></i>
+                            <div>
+                                <strong>Forvo</strong>
+                                <p>Wymowa polskich słów</p>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 7: Sport i hobby</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: "pływać",
+            2: "sport",
+            3: "zainteresowanie",
+            4: "biegać"
+        };
+        
+        let stats = {
+            total: 0,
+            correct: 0,
+            completed: []
+        };
+        
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            let userAnswer;
+            let isCorrect = false;
+            
+            if (exerciseNum <= 2) {
+                userAnswer = selectElement.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                selectElement.classList.remove('correct', 'incorrect');
+                selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+            } else {
+                const selectedRadio = document.querySelector(`input[name="q${exerciseNum}"]:checked`);
+                if (!selectedRadio) {
+                    resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                    resultElement.className = 'result-message incorrect';
+                    resultElement.style.display = 'block';
+                    return;
+                }
+                
+                userAnswer = selectedRadio.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                const options = document.querySelectorAll(`.radio-option input[name="q${exerciseNum}"]`);
+                options.forEach(option => {
+                    const parentLabel = option.parentElement;
+                    parentLabel.classList.remove('correct', 'incorrect');
+                    
+                    if (option.value === correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('correct');
+                    } else if (option.checked && option.value !== correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('incorrect');
+                    }
+                });
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Dobra robota!`;
+                resultElement.className = 'result-message correct';
+                
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.correct++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+                
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            resultElement.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 100);
+            
+            saveProgress();
+        }
+        
+        function showAnswer(exerciseNum) {
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            document.querySelectorAll('.correct-answer').forEach(el => {
+                el.classList.remove('show');
+            });
+            
+            answerElement.classList.add('show');
+            answerElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+        
+        function updateStats() {
+            document.getElementById('correctCount').textContent = stats.correct;
+            document.getElementById('totalCount').textContent = stats.total;
+            
+            const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+            document.getElementById('percentage').textContent = `${percentage}%`;
+            
+            const percentageElement = document.getElementById('percentage');
+            if (percentage >= 80) {
+                percentageElement.style.color = '#4CAF50';
+            } else if (percentage >= 50) {
+                percentageElement.style.color = '#FF9800';
+            } else {
+                percentageElement.style.color = '#f44336';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    this.classList.remove('correct', 'incorrect');
+                    
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            const radioOptions = document.querySelectorAll('.radio-option input');
+            radioOptions.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const options = document.querySelectorAll(`.radio-option input[name="${this.name}"]`);
+                    options.forEach(option => {
+                        option.parentElement.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    const exerciseNum = this.name.replace('q', '');
+                    const resultElement = document.getElementById(`result${exerciseNum}`);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            const vocabCards = document.querySelectorAll('.vocab-card');
+            vocabCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + index * 50);
+            });
+            
+            const exerciseCards = document.querySelectorAll('.exercise-card');
+            exerciseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            loadProgress();
+        });
+        
+        function saveProgress() {
+            const progress = {
+                stats: stats,
+                answers: {}
+            };
+            
+            for (let i = 1; i <= 4; i++) {
+                if (i <= 2) {
+                    const select = document.getElementById(`select${i}`);
+                    progress.answers[i] = select.value;
+                } else {
+                    const selectedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+                    progress.answers[i] = selectedRadio ? selectedRadio.value : '';
+                }
+            }
+            
+            localStorage.setItem(`temat7_progress`, JSON.stringify(progress));
+        }
+        
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(`temat7_progress`);
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    
+                    if (progress.stats) {
+                        stats = progress.stats;
+                        updateStats();
+                    }
+                    
+                    if (progress.answers) {
+                        for (let i = 1; i <= 4; i++) {
+                            if (progress.answers[i]) {
+                                if (i <= 2) {
+                                    const select = document.getElementById(`select${i}`);
+                                    select.value = progress.answers[i];
+                                    
+                                    if (stats.completed.includes(i)) {
+                                        select.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                    }
+                                } else {
+                                    const radio = document.querySelector(`input[name="q${i}"][value="${progress.answers[i]}"]`);
+                                    if (radio) {
+                                        radio.checked = true;
+                                        
+                                        if (stats.completed.includes(i)) {
+                                            const parentLabel = radio.parentElement;
+                                            parentLabel.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                            
+                                            if (progress.answers[i] !== correctAnswers[i]) {
+                                                const correctRadio = document.querySelector(`input[name="q${i}"][value="${correctAnswers[i]}"]`);
+                                                if (correctRadio) {
+                                                    correctRadio.parentElement.classList.add('correct');
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.log('Nie można załadować zapisanego postępu');
+                }
+            }
+        }
+        
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('.answer-select, input[type="radio"]')) {
+                saveProgress();
+            }
+        });
+        
+
+    </script>
+</body>
+</html>

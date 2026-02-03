@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 6: Czas i pogoda | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Додаткові стилі для сторінки теми */
+        .topic-page {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .topic-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .topic-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .topic-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .topic-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid #4CAF50;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Стилі для словника */
+        .vocabulary-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E8F5E9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .vocab-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s;
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.15);
+        }
+        
+        .polish-word {
+            color: #2E7D32;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .ukrainian-word {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .example {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .translation {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Стилі для відео */
+        .video-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .video-container {
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .video-link:hover {
+            background: #388E3C;
+        }
+        
+        .video-note {
+            background: #E8F5E9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        /* Стилі для вправ */
+        .exercise-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .exercise-title {
+            color: #2E7D32;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-question {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Стилі для випадаючих меню */
+        .answer-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .answer-select.correct {
+            border-color: #4CAF50;
+            background-color: #E8F5E9;
+        }
+        
+        .answer-select.incorrect {
+            border-color: #f44336;
+            background-color: #FFEBEE;
+        }
+        
+        .answer-select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        /* Стилі для перемикачів (радіо) */
+        .radio-options {
+            margin-bottom: 15px;
+        }
+        
+        .radio-option {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .radio-option:hover {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+        }
+        
+        .radio-option.correct {
+            background: #E8F5E9;
+            border-color: #4CAF50;
+            color: #2E7D32;
+        }
+        
+        .radio-option.incorrect {
+            background: #FFEBEE;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        
+        .radio-option input {
+            margin-right: 10px;
+        }
+        
+        /* Блок з правильною відповіддю */
+        .correct-answer {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        
+        .correct-answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Кнопка для перевірки відповіді */
+        .check-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .check-btn:hover {
+            background: #388E3C;
+        }
+        
+        .check-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Кнопка для перегляду відповіді */
+        .show-answer-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .show-answer-btn:hover {
+            background: #1976D2;
+        }
+        
+        /* Результат перевірки */
+        .result-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-message.correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+        
+        .result-message.incorrect {
+            background: #FFEBEE;
+            color: #c62828;
+            border: 1px solid #FFCDD2;
+        }
+        
+        /* Додаткові матеріали */
+        .resources-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .resource-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateX(5px);
+            background: #E8F5E9;
+        }
+        
+        .resource-card i {
+            color: #4CAF50;
+            font-size: 1.5rem;
+        }
+        
+        .topic-footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        .counter {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* Стилі для правильної відповіді */
+        .answer-highlight {
+            color: #2E7D32;
+            font-weight: bold;
+            background: #C8E6C9;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        /* Блок для статистики */
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 15px;
+            background: #F5F5F5;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <!-- Заголовок теми -->
+            <header class="topic-header">
+                <h1><i class="fas fa-calendar-alt"></i> Temat 6: Czas i pogoda</h1>
+                <p class="subtitle">Słownictwo związane z czasem, datami, porami roku i pogodą</p>
+                <div class="counter">Temat 6 z 8 | Dział: Leksyka</div>
+            </header>
+            
+            <!-- Навігація -->
+            <nav class="topic-nav">
+                <a href="temat5.html" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Poprzedni temat
+                </a>
+                <a href="temat7.html" class="nav-button">
+                    Następny temat <i class="fas fa-arrow-right"></i>
+                </a>
+            </nav>
+            
+            <!-- Основний контент -->
+            <div class="content-grid">
+                <!-- Ліва колонка -->
+                <div class="left-column">
+                    <!-- Словник -->
+                    <section class="vocabulary-section">
+                        <h2 class="section-title"><i class="fas fa-book"></i> Słownik tematyczny</h2>
+                        
+                        <div class="vocabulary-grid">
+                            <!-- Час -->
+                            <div class="vocab-card">
+                                <div class="polish-word">czas</div>
+                                <div class="ukrainian-word">час</div>
+                                <div class="example">Czas szybko mija.</div>
+                                <div class="translation">Час швидко минає.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">godzina</div>
+                                <div class="ukrainian-word">година</div>
+                                <div class="example">Jest godzina ósma.</div>
+                                <div class="translation">Зараз восьма година.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">minuta</div>
+                                <div class="ukrainian-word">хвилина</div>
+                                <div class="example">Zaczekaj pięć minut.</div>
+                                <div class="translation">Почекай п'ять хвилин.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">sekunda</div>
+                                <div class="ukrainian-word">секунда</div>
+                                <div class="example">Za sekundę przyjdę.</div>
+                                <div class="translation">За секунду прийду.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">dzień</div>
+                                <div class="ukrainian-word">день</div>
+                                <div class="example">Mamy piękny dzień.</div>
+                                <div class="translation">У нас чудовий день.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">tydzień</div>
+                                <div class="ukrainian-word">тиждень</div>
+                                <div class="example">Pracuję pięć dni w tygodniu.</div>
+                                <div class="translation">Я працюю п'ять днів на тиждень.</div>
+                            </div>
+                            
+                            <!-- Дні тижня -->
+                            <div class="vocab-card">
+                                <div class="polish-word">poniedziałek</div>
+                                <div class="ukrainian-word">понеділок</div>
+                                <div class="example">W poniedziałek idę do szkoły.</div>
+                                <div class="translation">У понеділок я йду до школи.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">wtorek</div>
+                                <div class="ukrainian-word">вівторок</div>
+                                <div class="example">We wtorek mam wolne.</div>
+                                <div class="translation">У вівторок у мене вихідний.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">środa</div>
+                                <div class="ukrainian-word">середа</div>
+                                <div class="example">W środę spotykam się z przyjaciółmi.</div>
+                                <div class="translation">У середу я зустрічаюся з друзями.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">czwartek</div>
+                                <div class="ukrainian-word">четвер</div>
+                                <div class="example">W czwartek chodzę na basen.</div>
+                                <div class="translation">У четвер я ходжу в басейн.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">piątek</div>
+                                <div class="ukrainian-word">п'ятниця</div>
+                                <div class="example">W piątek kończę pracę wcześnie.</div>
+                                <div class="translation">У п'ятницю я закінчую роботу рано.</div>
+                            </div>
+                            
+                            <!-- Пори року -->
+                            <div class="vocab-card">
+                                <div class="polish-word">wiosna</div>
+                                <div class="ukrainian-word">весна</div>
+                                <div class="example">Wiosną kwitną kwiaty.</div>
+                                <div class="translation">Навесні цвітуть квіти.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">lato</div>
+                                <div class="ukrainian-word">літо</div>
+                                <div class="example">Latem jeżdżę nad morze.</div>
+                                <div class="translation">Влітку я їжджу на море.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">jesień</div>
+                                <div class="ukrainian-word">осінь</div>
+                                <div class="example">Jesienią spadają liście.</div>
+                                <div class="translation">Восени падають листя.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">zima</div>
+                                <div class="ukrainian-word">зима</div>
+                                <div class="example">Zimą pada śnieg.</div>
+                                <div class="translation">Взимку падає сніг.</div>
+                            </div>
+                            
+                            <!-- Погода -->
+                            <div class="vocab-card">
+                                <div class="polish-word">pogoda</div>
+                                <div class="ukrainian-word">погода</div>
+                                <div class="example">Dzisiaj jest ładna pogoda.</div>
+                                <div class="translation">Сьогодні гарна погода.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">słońce</div>
+                                <div class="ukrainian-word">сонце</div>
+                                <div class="example">Świeci słońce.</div>
+                                <div class="translation">Світить сонце.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">deszcz</div>
+                                <div class="ukrainian-word">дощ</div>
+                                <div class="example">Pada deszcz.</div>
+                                <div class="translation">Йде дощ.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">śnieg</div>
+                                <div class="ukrainian-word">сніг</div>
+                                <div class="example">Pada śnieg.</div>
+                                <div class="translation">Йде сніг.</div>
+                            </div>
+                            
+                            <div class="vocab-card">
+                                <div class="polish-word">wiatr</div>
+                                <div class="ukrainian-word">вітер</div>
+                                <div class="example">Dziś jest silny wiatr.</div>
+                                <div class="translation">Сьогодні сильний вітер.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Wskazówka:</strong> Ćwicz mówienie o czasie i dacie po polsku!</p>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Права колонка -->
+                <div class="right-column">
+                    <!-- Відео -->
+                    <section class="video-section">
+                        <h2 class="section-title"><i class="fas fa-video"></i> Materiał wideo</h2>
+                        
+                        <p>Obejrzyj wideo o czasie i pogodzie po polsku:</p>
+                        
+                        <div class="video-container">
+                            <i class="fas fa-play-circle" style="font-size: 3rem; color: #4CAF50; margin-bottom: 15px;"></i>
+                            <p><strong>Czas i pogoda po polsku</strong></p>
+                            <p>Podstawowe słownictwo związane z czasem i opisem pogody</p>
+                            
+                            <a href="https://www.youtube.com/watch?v=lbBbi_ds4eU" target="_blank" class="video-link">
+                                <i class="fab fa-youtube"></i> Obejrzyj wideo na YouTube
+                            </a>
+                        </div>
+                        
+                        <div class="video-note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Jak korzystać z wideo:</strong></p>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Naucz się mówić godziny po polsku</li>
+                                <li>Zapisz nazwy pór roku i miesięcy</li>
+                                <li>Powtarzaj opisy pogody</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <!-- Вправи -->
+                    <section class="exercise-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <p>Wykonaj ćwiczenia, aby utrwalić słownictwo. Sprawdź swoją wiedzę!</p>
+                        
+                        <!-- Статистика -->
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="correctCount">0</div>
+                                <div class="stat-label">Poprawne</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalCount">0</div>
+                                <div class="stat-label">Wykonane</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="percentage">0%</div>
+                                <div class="stat-label">Skuteczność</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 1 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 1: Pory roku</h3>
+                            <p class="exercise-question">Jak po polsku nazywa się "зима"?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="wiosna">wiosna</option>
+                                <option value="lato">lato</option>
+                                <option value="jesień">jesień</option>
+                                <option value="zima">zima</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(1)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                            
+                            <div class="correct-answer" id="answer1">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">zima</span></p>
+                                <p><strong>Przykład:</strong> <span class="answer-highlight">Zimą</span> jeżdżę na nartach.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 2 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-list-ul"></i> Ćwiczenie 2: Pogoda</h3>
+                            <p class="exercise-question">Jak po polsku nazywa się "дощ"?</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="śnieg">śnieg</option>
+                                <option value="deszcz">deszcz</option>
+                                <option value="wiatr">wiatr</option>
+                                <option value="słońce">słońce</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(2)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                            
+                            <div class="correct-answer" id="answer2">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">deszcz</span></p>
+                                <p><strong>Przykład:</strong> Pada <span class="answer-highlight">deszcz</span>, weź parasol.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 3 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-check-circle"></i> Ćwiczenie 3: Dni tygodnia</h3>
+                            <p class="exercise-question">Który dzień jest po wtorku?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option3a">
+                                    <input type="radio" name="q3" value="poniedziałek">
+                                    poniedziałek
+                                </label>
+                                <label class="radio-option" id="option3b">
+                                    <input type="radio" name="q3" value="środa">
+                                    środa
+                                </label>
+                                <label class="radio-option" id="option3c">
+                                    <input type="radio" name="q3" value="czwartek">
+                                    czwartek
+                                </label>
+                                <label class="radio-option" id="option3d">
+                                    <input type="radio" name="q3" value="piątek">
+                                    piątek
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(3)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                            
+                            <div class="correct-answer" id="answer3">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">środa</span></p>
+                                <p><strong>Kolejność dni:</strong> poniedziałek → wtorek → <span class="answer-highlight">środa</span> → czwartek → piątek</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Вправа 4 -->
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-sun"></i> Ćwiczenie 4: Opis pogody</h3>
+                            <p class="exercise-question">Co świeci na niebie w słoneczny dzień?</p>
+                            
+                            <div class="radio-options">
+                                <label class="radio-option" id="option4a">
+                                    <input type="radio" name="q4" value="księżyc">
+                                    księżyc
+                                </label>
+                                <label class="radio-option" id="option4b">
+                                    <input type="radio" name="q4" value="słońce">
+                                    słońce
+                                </label>
+                                <label class="radio-option" id="option4c">
+                                    <input type="radio" name="q4" value="gwiazdy">
+                                    gwiazdy
+                                </label>
+                                <label class="radio-option" id="option4d">
+                                    <input type="radio" name="q4" value="chmury">
+                                    chmury
+                                </label>
+                            </div>
+                            
+                            <button class="check-btn" onclick="checkAnswer(4)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <button class="show-answer-btn" onclick="showAnswer(4)">
+                                <i class="fas fa-eye"></i> Pokaż poprawną odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result4"></div>
+                            
+                            <div class="correct-answer" id="answer4">
+                                <p><strong>Poprawna odpowiedź:</strong> <span class="answer-highlight">słońce</span></p>
+                                <p><strong>Przykład:</strong> W słoneczny dzień świeci <span class="answer-highlight">słońce</span>.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Додаткові матеріали -->
+                    <section class="resources-section">
+                        <h2 class="section-title"><i class="fas fa-external-link-alt"></i> Dodatkowe materiały</h2>
+                        
+                        <a href="https://pl.wiktionary.org" target="_blank" class="resource-card">
+                            <i class="fas fa-book-open"></i>
+                            <div>
+                                <strong>Wiktionary</strong>
+                                <p>Słownik polsko-ukraiński online</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://forvo.com/languages/pl/" target="_blank" class="resource-card">
+                            <i class="fas fa-volume-up"></i>
+                            <div>
+                                <strong>Forvo</strong>
+                                <p>Wymowa polskich słów</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.polskijazyk.pl" target="_blank" class="resource-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>PolskiJęzyk.pl</strong>
+                                <p>Darmowe lekcje polskiego</p>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Футер теми -->
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 6: Czas i pogoda</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "zima",
+            2: "deszcz",
+            3: "środa",
+            4: "słońce"
+        };
+        
+        // Статистика
+        let stats = {
+            total: 0,
+            correct: 0,
+            completed: []
+        };
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            let userAnswer;
+            let isCorrect = false;
+            
+            // Отримуємо відповідь користувача
+            if (exerciseNum <= 2) {
+                // Для випадаючих меню
+                userAnswer = selectElement.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                // Змінюємо стиль випадаючого списку
+                selectElement.classList.remove('correct', 'incorrect');
+                selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+            } else {
+                // Для радіо-кнопок
+                const selectedRadio = document.querySelector(`input[name="q${exerciseNum}"]:checked`);
+                if (!selectedRadio) {
+                    resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                    resultElement.className = 'result-message incorrect';
+                    resultElement.style.display = 'block';
+                    return;
+                }
+                
+                userAnswer = selectedRadio.value;
+                isCorrect = userAnswer === correctAnswers[exerciseNum];
+                
+                // Змінюємо стиль всіх варіантів
+                const options = document.querySelectorAll(`.radio-option input[name="q${exerciseNum}"]`);
+                options.forEach(option => {
+                    const parentLabel = option.parentElement;
+                    parentLabel.classList.remove('correct', 'incorrect');
+                    
+                    if (option.value === correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('correct');
+                    } else if (option.checked && option.value !== correctAnswers[exerciseNum]) {
+                        parentLabel.classList.add('incorrect');
+                    }
+                });
+            }
+            
+            // Показуємо результат
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Dobra robota!`;
+                resultElement.className = 'result-message correct';
+                
+                // Оновлюємо статистику тільки якщо ця вправа ще не була виконана
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.correct++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+                
+                // Оновлюємо статистику тільки якщо ця вправа ще не була виконана
+                if (!stats.completed.includes(exerciseNum)) {
+                    stats.total++;
+                    stats.completed.push(exerciseNum);
+                    updateStats();
+                }
+            }
+            
+            resultElement.style.display = 'block';
+            
+            // Прокручуємо до результату
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Анімація
+            resultElement.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 100);
+            
+            // Зберігаємо прогрес
+            saveProgress();
+        }
+        
+        // Функція для показу правильної відповіді
+        function showAnswer(exerciseNum) {
+            const answerElement = document.getElementById(`answer${exerciseNum}`);
+            
+            // Ховаємо всі відповіді
+            document.querySelectorAll('.correct-answer').forEach(el => {
+                el.classList.remove('show');
+            });
+            
+            // Показуємо потрібну відповідь
+            answerElement.classList.add('show');
+            
+            // Прокручуємо до відповіді
+            answerElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+        
+        // Функція для оновлення статистики
+        function updateStats() {
+            document.getElementById('correctCount').textContent = stats.correct;
+            document.getElementById('totalCount').textContent = stats.total;
+            
+            const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+            document.getElementById('percentage').textContent = `${percentage}%`;
+            
+            // Змінюємо колір відсотків
+            const percentageElement = document.getElementById('percentage');
+            if (percentage >= 80) {
+                percentageElement.style.color = '#4CAF50';
+            } else if (percentage >= 50) {
+                percentageElement.style.color = '#FF9800';
+            } else {
+                percentageElement.style.color = '#f44336';
+            }
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    this.classList.remove('correct', 'incorrect');
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Додаємо обробники для радіо-кнопок
+            const radioOptions = document.querySelectorAll('.radio-option input');
+            radioOptions.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const options = document.querySelectorAll(`.radio-option input[name="${this.name}"]`);
+                    options.forEach(option => {
+                        option.parentElement.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    const exerciseNum = this.name.replace('q', '');
+                    const resultElement = document.getElementById(`result${exerciseNum}`);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Анімація при завантаженні
+            const vocabCards = document.querySelectorAll('.vocab-card');
+            vocabCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + index * 50);
+            });
+            
+            // Завантажуємо збережений прогрес
+            loadProgress();
+        });
+        
+        // Функція для збереження прогресу
+        function saveProgress() {
+            const progress = {
+                stats: stats,
+                answers: {}
+            };
+            
+            for (let i = 1; i <= 4; i++) {
+                if (i <= 2) {
+                    const select = document.getElementById(`select${i}`);
+                    progress.answers[i] = select.value;
+                } else {
+                    const selectedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+                    progress.answers[i] = selectedRadio ? selectedRadio.value : '';
+                }
+            }
+            
+            localStorage.setItem(`temat6_progress`, JSON.stringify(progress));
+        }
+        
+        // Функція для завантаження прогресу
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(`temat6_progress`);
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    
+                    if (progress.stats) {
+                        stats = progress.stats;
+                        updateStats();
+                    }
+                    
+                    if (progress.answers) {
+                        for (let i = 1; i <= 4; i++) {
+                            if (progress.answers[i]) {
+                                if (i <= 2) {
+                                    const select = document.getElementById(`select${i}`);
+                                    select.value = progress.answers[i];
+                                    
+                                    if (stats.completed.includes(i)) {
+                                        select.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                    }
+                                } else {
+                                    const radio = document.querySelector(`input[name="q${i}"][value="${progress.answers[i]}"]`);
+                                    if (radio) {
+                                        radio.checked = true;
+                                        
+                                        if (stats.completed.includes(i)) {
+                                            const parentLabel = radio.parentElement;
+                                            parentLabel.classList.add(progress.answers[i] === correctAnswers[i] ? 'correct' : 'incorrect');
+                                            
+                                            if (progress.answers[i] !== correctAnswers[i]) {
+                                                const correctRadio = document.querySelector(`input[name="q${i}"][value="${correctAnswers[i]}"]`);
+                                                if (correctRadio) {
+                                                    correctRadio.parentElement.classList.add('correct');
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.log('Nie można załadować zapisanego postępu');
+                }
+            }
+        }
+        
+        // Автоматично зберігаємо прогрес при зміні відповідей
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('.answer-select, input[type="radio"]')) {
+                saveProgress();
+            }
+        });
+        
+
+    </script>
+</body>
+</html>
