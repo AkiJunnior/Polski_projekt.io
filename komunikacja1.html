@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 19: Poznawanie ludzi | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page { background-color: #FFFDE7; min-height: 100vh; padding: 20px 0; }
+        .topic-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1); overflow: hidden; margin-bottom: 30px; }
+        .topic-header { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; padding: 30px; text-align: center; }
+        .topic-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .topic-header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; }
+        .topic-nav { display: flex; justify-content: space-between; padding: 20px 30px; background-color: #FFF8E1; border-bottom: 1px solid #FFECB3; }
+        .nav-button { color: #FF8F00; text-decoration: none; padding: 10px 20px; border-radius: 8px; background-color: white; border: 2px solid #FF8F00; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-button:hover { background-color: #FF8F00; color: white; }
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+        
+        .dialogue-section, .phrases-section, .practice-section, .tips-section { 
+            background: white; border-radius: 10px; padding: 25px; 
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.05); margin-bottom: 25px; 
+        }
+        .section-title { 
+            color: #FF8F00; font-size: 1.8rem; margin-bottom: 25px; padding-bottom: 15px; 
+            border-bottom: 2px solid #FFF3CD; display: flex; align-items: center; gap: 12px; 
+        }
+        
+        /* Діалогові бульбашки */
+        .dialogue-container { margin: 25px 0; }
+        .dialogue-bubble { 
+            display: flex; margin-bottom: 20px; max-width: 80%; 
+            animation: fadeInUp 0.5s ease forwards; opacity: 0; 
+        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .dialogue-bubble:nth-child(1) { animation-delay: 0.1s; transform: translateY(20px); }
+        .dialogue-bubble:nth-child(2) { animation-delay: 0.3s; transform: translateY(20px); margin-left: auto; }
+        .dialogue-bubble:nth-child(3) { animation-delay: 0.5s; transform: translateY(20px); }
+        .dialogue-bubble:nth-child(4) { animation-delay: 0.7s; transform: translateY(20px); margin-left: auto; }
+        
+        .dialogue-avatar { 
+            width: 50px; height: 50px; border-radius: 50%; background: #FFECB3; 
+            display: flex; align-items: center; justify-content: center; margin-right: 15px; 
+            flex-shrink: 0; border: 2px solid #FFC107; 
+        }
+        .dialogue-avatar.anna { background: #FFF3E0; }
+        .dialogue-avatar.tomasz { background: #E3F2FD; }
+        
+        .dialogue-content { flex: 1; }
+        .dialogue-name { font-weight: bold; color: #FF8F00; margin-bottom: 5px; }
+        .dialogue-text { 
+            background: #FFF8E1; padding: 15px; border-radius: 15px; border-top-left-radius: 0; 
+            position: relative; border: 1px solid #FFECB3; 
+        }
+        .dialogue-bubble:nth-child(even) .dialogue-text { 
+            background: #E3F2FD; border-color: #BBDEFB; border-top-left-radius: 15px; 
+            border-top-right-radius: 0; 
+        }
+        .dialogue-bubble:nth-child(even) .dialogue-name { color: #2196F3; }
+        .dialogue-translation { 
+            font-size: 0.9rem; color: #666; margin-top: 8px; padding-left: 10px; 
+            border-left: 3px solid #FFC107; 
+        }
+        
+        /* Фрази */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+        .phrase-card { 
+            background: #FFF8E1; border-radius: 8px; padding: 20px; border-left: 4px solid #FFC107; 
+            transition: transform 0.3s; 
+        }
+        .phrase-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 193, 7, 0.15); }
+        .phrase-polish { font-size: 1.2rem; font-weight: 600; color: #FF8F00; margin-bottom: 8px; }
+        .phrase-translation { color: #555; margin-bottom: 10px; }
+        .phrase-context { font-size: 0.9rem; color: #777; font-style: italic; }
+        
+        /* Вправи */
+        .exercise-card { 
+            background: #FFF8E1; border-radius: 8px; padding: 20px; margin-bottom: 20px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .exercise-title { 
+            color: #FF8F00; font-size: 1.2rem; margin-bottom: 15px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        .exercise-question { margin-bottom: 15px; color: #333; }
+        .answer-select { 
+            width: 100%; padding: 12px; border: 2px solid #FFECB3; border-radius: 6px; 
+            font-size: 1rem; margin-bottom: 15px; background-color: white; cursor: pointer; 
+        }
+        .answer-select:focus { border-color: #FFC107; outline: none; }
+        
+        .check-btn { 
+            background: #FFC107; color: #333; border: none; padding: 10px 20px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; transition: background 0.3s; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; 
+        }
+        .check-btn:hover { background: #FFB300; }
+        
+        .result-message { 
+            padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; 
+            font-weight: 600; display: none; animation: fadeIn 0.5s ease; 
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-message.correct { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .result-message.incorrect { background: #FFEBEE; color: #c62828; border: 1px solid #FFCDD2; }
+        
+        /* Поради */
+        .tip-box { 
+            background: #FFF3CD; padding: 15px; border-radius: 8px; margin-bottom: 15px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .tip-title { 
+            color: #FF8F00; font-weight: 600; margin-bottom: 10px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        
+        .topic-footer { 
+            text-align: center; padding: 20px; background: #FFF8E1; 
+            border-top: 1px solid #FFECB3; color: #FF8F00; 
+        }
+        .counter { 
+            background: #FFC107; color: #333; padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.9rem; display: inline-block; margin-bottom: 10px; 
+        }
+        .audio-btn { 
+            background: #4CAF50; color: white; border: none; padding: 8px 15px; 
+            border-radius: 20px; cursor: pointer; font-size: 0.9rem; margin-left: 10px; 
+            transition: background 0.3s; 
+        }
+        .audio-btn:hover { background: #388E3C; }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-handshake"></i> Temat 16: Poznawanie ludzi</h1>
+                <p class="subtitle">Powitania, pożegnania, przedstawianie się</p>
+                <div class="counter">Temat 16 z 26 | Dział: Komunikacja</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="gramatyka10.html" class="nav-button"><i class="fas fa-arrow-left"></i> Poprzedni temat</a>
+                <a href="komunikacja2.html" class="nav-button">Następny temat <i class="fas fa-arrow-right"></i></a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="dialogue-section">
+                        <h2 class="section-title"><i class="fas fa-comments"></i> Przykładowy dialog</h2>
+                        <p>Obejrzyj rozmowę między Anną i Tomaszem, którzy spotykają się po raz pierwszy:</p>
+                        
+                        <div class="dialogue-container">
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar anna">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Anna</div>
+                                    <div class="dialogue-text">
+                                        Dzień dobry! Nazywam się Anna. A ty jak masz na imię?
+                                        <button class="audio-btn" onclick="playAudio('audio1')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Добрий день! Мене звуть Анна. А тебе як звати?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar tomasz">
+                                    <i class="fas fa-male" style="color: #2196F3;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Tomasz</div>
+                                    <div class="dialogue-text">
+                                        Cześć! Mam na imię Tomasz. Miło mi cię poznać, Anno.
+                                        <button class="audio-btn" onclick="playAudio('audio2')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Привіт! Мене звати Томаш. Приємно познайомитися, Анно.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar anna">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Anna</div>
+                                    <div class="dialogue-text">
+                                        Miło mi również! Skąd jesteś, Tomaszu?
+                                        <button class="audio-btn" onclick="playAudio('audio3')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Мені також приємно! Ти звідки, Томаше?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar tomasz">
+                                    <i class="fas fa-male" style="color: #2196F3;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Tomasz</div>
+                                    <div class="dialogue-text">
+                                        Jestem z Krakowa. A ty?
+                                        <button class="audio-btn" onclick="playAudio('audio4')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Я з Кракова. А ти?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar anna">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Anna</div>
+                                    <div class="dialogue-text">
+                                        Ja jestem z Warszawy. Do widzenia, Tomaszu! Mam nadzieję, że się jeszcze zobaczymy.
+                                        <button class="audio-btn" onclick="playAudio('audio5')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Я з Варшави. До побачення, Томаше! Сподіваюся, ще побачимося.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="phrases-section">
+                        <h2 class="section-title"><i class="fas fa-language"></i> Przydatne zwroty</h2>
+                        
+                        <div class="phrases-grid">
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Dzień dobry!</div>
+                                <div class="phrase-translation">Добрий день! (формально)</div>
+                                <div class="phrase-context">Używamy od rana do wieczora</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Cześć!</div>
+                                <div class="phrase-translation">Привіт! (неформально)</div>
+                                <div class="phrase-context">Do znajomych, osób w podobnym wieku</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Nazywam się...</div>
+                                <div class="phrase-translation">Мене звуть...</div>
+                                <div class="phrase-context">Przedstawianie się</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Mam na imię...</div>
+                                <div class="phrase-translation">Мене звати...</div>
+                                <div class="phrase-context">Mniej formalne przedstawienie</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Miło mi cię poznać.</div>
+                                <div class="phrase-translation">Приємно познайомитися.</div>
+                                <div class="phrase-context">Po przedstawieniu się</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Skąd jesteś?</div>
+                                <div class="phrase-translation">Ти звідки?</div>
+                                <div class="phrase-context">Pytanie o pochodzenie</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Jestem z...</div>
+                                <div class="phrase-translation">Я з...</div>
+                                <div class="phrase-context">Odpowiedź na pytanie o pochodzenie</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Do widzenia!</div>
+                                <div class="phrase-translation">До побачення!</div>
+                                <div class="phrase-context">Formalne pożegnanie</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Pa! / Cześć!</div>
+                                <div class="phrase-translation">Бувай! / Привіт!</div>
+                                <div class="phrase-context">Nieformalne pożegnanie</div>
+                            </div>
+                            
+                            <div class="phrase-card">
+                                <div class="phrase-polish">Miłego dnia!</div>
+                                <div class="phrase-translation">Гарного дня!</div>
+                                <div class="phrase-context">Życzenia przy pożegnaniu</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia komunikacyjne</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1: Wybierz właściwe powitanie</h3>
+                            <p class="exercise-question">Spotykasz swojego nauczyciela rano. Co powiesz?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Cześć!">Cześć!</option>
+                                <option value="Dzień dobry!">Dzień dobry!</option>
+                                <option value="Hej!">Hej!</option>
+                                <option value="Siema!">Siema!</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2: Uzupełnij dialog</h3>
+                            <p class="exercise-question">— Dzień dobry! ________ Anna.<br>— Miło mi, Anno. ________ Tomasz.</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Jestem / Nazywam się">Jestem / Nazywam się</option>
+                                <option value="Nazywam się / Mam na imię">Nazywam się / Mam na imię</option>
+                                <option value="Mam na imię / Jestem">Mam na imię / Jestem</option>
+                                <option value="To jest / Mam">To jest / Mam</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3: Pożegnanie formalne</h3>
+                            <p class="exercise-question">Żegnasz się z osobą, którą poznałeś na spotkaniu biznesowym. Co powiesz?</p>
+                            
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Pa!">Pa!</option>
+                                <option value="Do widzenia!">Do widzenia!</option>
+                                <option value="Nara!">Nara!</option>
+                                <option value="Cześć!">Cześć!</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Wskazówki komunikacyjne</h2>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-hand-point-right"></i> Różnica formalności</div>
+                            <p><strong>Formalnie:</strong> Dzień dobry, Do widzenia, Nazywam się<br>
+                            <strong>Nieformalnie:</strong> Cześć, Pa, Mam na imię</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-users"></i> Kontakt wzrokowy</div>
+                            <p>Podczas przedstawiania się patrz rozmówcy w oczy i uśmiechaj się.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-handshake"></i> Uścisk dłoni</div>
+                            <p>W sytuacjach formalnych podajemy rękę przy powitaniu.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-comment-medical"></i> Zwroty grzecznościowe</div>
+                            <p>Zawsze mów "proszę", "dziękuję", "przepraszam".</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 19: Poznawanie ludzi</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "Dzień dobry!",
+            2: "Nazywam się / Mam na imię",
+            3: "Do widzenia!"
+        };
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Dobrze wybrałeś/aś!`;
+                resultElement.className = 'result-message correct';
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Функція для відтворення аудіо (симуляція)
+        function playAudio(audioId) {
+            // У реальному проекті тут було б підключення до справжніх аудіофайлів
+            const audioText = {
+                'audio1': 'Dzień dobry! Nazywam się Anna. A ty jak masz na imię?',
+                'audio2': 'Cześć! Mam na imię Tomasz. Miło mi cię poznać, Anno.',
+                'audio3': 'Miło mi również! Skąd jesteś, Tomaszu?',
+                'audio4': 'Jestem z Krakowa. A ty?',
+                'audio5': 'Ja jestem z Warszawy. Do widzenia, Tomaszu! Mam nadzieję, że się jeszcze zobaczymy.'
+            };
+            
+            // Використовуємо Web Speech API, якщо доступний
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(audioText[audioId]);
+                utterance.lang = 'pl-PL';
+                utterance.rate = 0.9;
+                speechSynthesis.speak(utterance);
+                
+                // Показуємо повідомлення про відтворення
+                showAudioMessage(`Odtwarzanie: "${audioText[audioId]}"`);
+            } else {
+                showAudioMessage('Twoja przeglądarka nie obsługuje odtwarzania mowy. Spróbuj w Chrome.');
+            }
+        }
+        
+        function showAudioMessage(message) {
+            // Створюємо тимчасове повідомлення
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                position: fixed; bottom: 20px; right: 20px; 
+                background: #4CAF50; color: white; padding: 10px 15px;
+                border-radius: 5px; z-index: 1000; font-size: 0.9rem;
+                animation: fadeIn 0.3s;
+            `;
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(messageDiv), 300);
+            }, 3000);
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Анімація діалогів при завантаженні
+            const dialogueBubbles = document.querySelectorAll('.dialogue-bubble');
+            dialogueBubbles.forEach(bubble => {
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateY(20px)';
+            });
+            
+            // Запускаємо анімації з затримкою
+            setTimeout(() => {
+                dialogueBubbles.forEach((bubble, index) => {
+                    setTimeout(() => {
+                        bubble.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        bubble.style.opacity = '1';
+                        bubble.style.transform = 'translateY(0)';
+                    }, index * 300);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

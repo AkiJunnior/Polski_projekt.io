@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 9: Alfabet i wymowa | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page {
+            background-color: #f0f8ff;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .topic-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .topic-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .topic-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .topic-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background-color: #E3F2FD;
+            border-bottom: 1px solid #BBDEFB;
+        }
+        
+        .nav-button {
+            color: #2196F3;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid #2196F3;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-button:hover {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .grammar-section, .practice-section, .tips-section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #2196F3;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E3F2FD;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .letter-card {
+            background: #E3F2FD;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            border: 2px solid #BBDEFB;
+            transition: transform 0.3s;
+        }
+        
+        .letter-card:hover {
+            transform: translateY(-5px);
+            background: #BBDEFB;
+        }
+        
+        .letter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0D47A1;
+            margin-bottom: 5px;
+        }
+        
+        .pronunciation {
+            font-size: 0.9rem;
+            color: #1565C0;
+        }
+        
+        .special-letter {
+            background: #FFF3E0;
+            border-color: #FFCC80;
+        }
+        
+        .special-letter .letter {
+            color: #E65100;
+        }
+        
+        .rule-box {
+            background: #E3F2FD;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .rule-title {
+            color: #1565C0;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .example-box {
+            background: #F5F5F5;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            border-left: 3px solid #2196F3;
+        }
+        
+        .example-text {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .exercise-card {
+            background: #F9F9F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .exercise-title {
+            color: #1565C0;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-question {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .answer-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .check-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .check-btn:hover {
+            background: #1976D2;
+        }
+        
+        .result-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .result-message.correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+        
+        .result-message.incorrect {
+            background: #FFEBEE;
+            color: #c62828;
+            border: 1px solid #FFCDD2;
+        }
+        
+        .tip-box {
+            background: #E3F2FD;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .tip-title {
+            color: #1565C0;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .topic-footer {
+            text-align: center;
+            padding: 20px;
+            background: #E3F2FD;
+            border-top: 1px solid #BBDEFB;
+            color: #1565C0;
+        }
+        
+        .counter {
+            background: #2196F3;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background: #FFF9C4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-font"></i> Temat 9: Alfabet i wymowa</h1>
+                <p class="subtitle">Podstawy polskiej wymowy i alfabetu</p>
+                <div class="counter">Temat 9 z 26 | Dział: Gramatyka</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="temat8.html" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Poprzedni temat
+                </a>
+                <a href="gramatyka2.html" class="nav-button">
+                    Następny temat <i class="fas fa-arrow-right"></i>
+                </a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="grammar-section">
+                        <h2 class="section-title"><i class="fas fa-book-open"></i> Polski alfabet</h2>
+                        
+                        <p>Polski alfabet oparty jest na alfabecie łacińskim i składa się z 32 liter:</p>
+                        
+                        <div class="alphabet-grid">
+                            <div class="letter-card">
+                                <div class="letter">A a</div>
+                                <div class="pronunciation">[a]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ą ą</div>
+                                <div class="pronunciation">[ɔ̃]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">B b</div>
+                                <div class="pronunciation">[b]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">C c</div>
+                                <div class="pronunciation">[ʦ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ć ć</div>
+                                <div class="pronunciation">[ʨ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">D d</div>
+                                <div class="pronunciation">[d]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">E e</div>
+                                <div class="pronunciation">[ɛ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ę ę</div>
+                                <div class="pronunciation">[ɛ̃]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">F f</div>
+                                <div class="pronunciation">[f]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">G g</div>
+                                <div class="pronunciation">[g]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">H h</div>
+                                <div class="pronunciation">[x]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">I i</div>
+                                <div class="pronunciation">[i]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">J j</div>
+                                <div class="pronunciation">[j]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">K k</div>
+                                <div class="pronunciation">[k]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">L l</div>
+                                <div class="pronunciation">[l]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ł ł</div>
+                                <div class="pronunciation">[w]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">M m</div>
+                                <div class="pronunciation">[m]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">N n</div>
+                                <div class="pronunciation">[n]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ń ń</div>
+                                <div class="pronunciation">[ɲ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">O o</div>
+                                <div class="pronunciation">[ɔ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ó ó</div>
+                                <div class="pronunciation">[u]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">P p</div>
+                                <div class="pronunciation">[p]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">R r</div>
+                                <div class="pronunciation">[r]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">S s</div>
+                                <div class="pronunciation">[s]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ś ś</div>
+                                <div class="pronunciation">[ɕ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">T t</div>
+                                <div class="pronunciation">[t]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">U u</div>
+                                <div class="pronunciation">[u]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">W w</div>
+                                <div class="pronunciation">[v]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Y y</div>
+                                <div class="pronunciation">[ɨ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Z z</div>
+                                <div class="pronunciation">[z]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ź ź</div>
+                                <div class="pronunciation">[ʑ]</div>
+                            </div>
+                            <div class="letter-card">
+                                <div class="letter">Ż ż</div>
+                                <div class="pronunciation">[ʐ]</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-star"></i> Specjalne znaki polskiego alfabetu</h3>
+                            <p>Polski alfabet zawiera 9 liter z diakrytykami, które nie występują w podstawowym alfabecie łacińskim:</p>
+                            <ul>
+                                <li><strong>Ą, ą</strong> - nosowe "o"</li>
+                                <li><strong>Ć, ć</strong> - miękkie "c"</li>
+                                <li><strong>Ę, ę</strong> - nosowe "e"</li>
+                                <li><strong>Ł, ł</strong> - wymawiane jak angielskie "w"</li>
+                                <li><strong>Ń, ń</strong> - miękkie "n"</li>
+                                <li><strong>Ó, ó</strong> - wymawiane jak "u"</li>
+                                <li><strong>Ś, ś</strong> - miękkie "s"</li>
+                                <li><strong>Ź, ź</strong> - miękkie "z"</li>
+                                <li><strong>Ż, ż</strong> - twarde "z"</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="grammar-section">
+                        <h2 class="section-title"><i class="fas fa-volume-up"></i> Podstawowe zasady wymowy</h2>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-1"></i> Samogłoski</h3>
+                            <p>W języku polskim jest 8 samogłosek: <span class="highlight">a, ą, e, ę, i, o, u, y</span>.</p>
+                            <div class="example-box">
+                                <div class="example-text">dom, książka, ulica, ryba</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-2"></i> Spółgłoski miękkie i twarde</h3>
+                            <p>Spółgłoski miękkie: <span class="highlight">ć, ś, ź, ń, dź, dzi, si, zi, ci</span></p>
+                            <p>Spółgłoski twarde: <span class="highlight">cz, sz, ż, rz, dż</span></p>
+                            <div class="example-box">
+                                <div class="example-text">ćma (miękkie) vs. czas (twarde)</div>
+                                <div class="example-text">śmiech (miękkie) vs. szkoła (twarde)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-3"></i> Wymowa "rz" i "ż"</h3>
+                            <p>Dwuznak <span class="highlight">"rz"</span> wymawiamy tak samo jak <span class="highlight">"ż"</span>.</p>
+                            <div class="example-box">
+                                <div class="example-text">rzeka - [żeka]</div>
+                                <div class="example-text">żaba - [żaba]</div>
+                                <div class="translation">Obydwa wymawiamy identycznie!</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1</h3>
+                            <p class="exercise-question">Która litera jest wymawiana jako nosowe "o"?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="ę">ę</option>
+                                <option value="ą">ą</option>
+                                <option value="ó">ó</option>
+                                <option value="ł">ł</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2</h3>
+                            <p class="exercise-question">Jak wymawiamy dwuznak "rz"?</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="jak ż">jak ż</option>
+                                <option value="jak sz">jak sz</option>
+                                <option value="jak cz">jak cz</option>
+                                <option value="oddzielnie r i z">oddzielnie r i z</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3</h3>
+                            <p class="exercise-question">Która litera NIE występuje w polskim alfabecie?</p>
+                            
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="q">q</option>
+                                <option value="w">w</option>
+                                <option value="ź">ź</option>
+                                <option value="ę">ę</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Wskazówki do nauki</h2>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 1</div>
+                            <p>Ucz się wymowy słuchając polskiej mowy - radio, podcasty, filmy.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 2</div>
+                            <p>Ćwicz trudne dźwięki (sz, cz, ż, ś, ć, ź) w izolacji, potem w słowach.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 3</div>
+                            <p>Zwróć uwagę na akcent - w języku polskim pada na przedostatnią sylabę.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 9: Alfabet i wymowa</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: "ą",
+            2: "jak ż",
+            3: "q"
+        };
+        
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Dobra robota!`;
+                resultElement.className = 'result-message correct';
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            resultElement.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 100);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

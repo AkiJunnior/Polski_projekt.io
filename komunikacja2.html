@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 20: Rozmowa telefoniczna | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page { background-color: #FFFDE7; min-height: 100vh; padding: 20px 0; }
+        .topic-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1); overflow: hidden; margin-bottom: 30px; }
+        .topic-header { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; padding: 30px; text-align: center; }
+        .topic-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .topic-header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; }
+        .topic-nav { display: flex; justify-content: space-between; padding: 20px 30px; background-color: #FFF8E1; border-bottom: 1px solid #FFECB3; }
+        .nav-button { color: #FF8F00; text-decoration: none; padding: 10px 20px; border-radius: 8px; background-color: white; border: 2px solid #FF8F00; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-button:hover { background-color: #FF8F00; color: white; }
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+        
+        .phone-section, .scenarios-section, .practice-section, .tips-section { 
+            background: white; border-radius: 10px; padding: 25px; 
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.05); margin-bottom: 25px; 
+        }
+        .section-title { 
+            color: #FF8F00; font-size: 1.8rem; margin-bottom: 25px; padding-bottom: 15px; 
+            border-bottom: 2px solid #FFF3CD; display: flex; align-items: center; gap: 12px; 
+        }
+        
+        /* Стилі для телефону */
+        .phone-container { 
+            background: #FFF8E1; border-radius: 20px; padding: 30px; margin: 25px 0; 
+            border: 3px solid #FFC107; position: relative; max-width: 600px; 
+        }
+        .phone-screen { 
+            background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; 
+            border: 2px solid #FFECB3; min-height: 200px; 
+        }
+        .phone-call-info { 
+            text-align: center; margin-bottom: 20px; padding-bottom: 15px; 
+            border-bottom: 1px dashed #FFC107; 
+        }
+        .caller-name { font-size: 1.4rem; font-weight: bold; color: #FF8F00; }
+        .call-time { color: #666; font-size: 0.9rem; }
+        
+        /* Діалог у телефоні */
+        .call-dialogue { margin-top: 20px; }
+        .call-message { 
+            margin-bottom: 15px; padding: 10px 15px; border-radius: 15px; 
+            max-width: 80%; clear: both; 
+        }
+        .call-message.incoming { 
+            background: #E3F2FD; float: left; border-top-left-radius: 5px; 
+            border: 1px solid #BBDEFB; 
+        }
+        .call-message.outgoing { 
+            background: #FFF3CD; float: right; border-top-right-radius: 5px; 
+            border: 1px solid #FFECB3; 
+        }
+        .call-message-text { margin-bottom: 5px; }
+        .call-message-translation { 
+            font-size: 0.85rem; color: #666; font-style: italic; 
+            border-left: 2px solid #FFC107; padding-left: 8px; 
+        }
+        
+        /* Кнопки телефону */
+        .phone-buttons { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; 
+            margin-top: 20px; 
+        }
+        .phone-button { 
+            background: #FFF3CD; border: 2px solid #FFC107; border-radius: 50%; 
+            width: 60px; height: 60px; display: flex; align-items: center; 
+            justify-content: center; cursor: pointer; transition: all 0.3s; 
+            margin: 0 auto; 
+        }
+        .phone-button:hover { background: #FFC107; transform: scale(1.1); }
+        .phone-button.accept { background: #4CAF50; border-color: #388E3C; color: white; }
+        .phone-button.reject { background: #f44336; border-color: #d32f2f; color: white; }
+        
+        /* Сценарії */
+        .scenario-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .scenario-card { 
+            background: #FFF8E1; border-radius: 10px; padding: 20px; 
+            border-top: 4px solid #FFC107; transition: transform 0.3s; 
+        }
+        .scenario-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(255, 193, 7, 0.15); }
+        .scenario-title { 
+            font-size: 1.3rem; font-weight: bold; color: #FF8F00; 
+            margin-bottom: 15px; display: flex; align-items: center; gap: 10px; 
+        }
+        .scenario-dialog { 
+            background: white; padding: 15px; border-radius: 8px; 
+            margin: 10px 0; border-left: 3px solid #4CAF50; 
+        }
+        .scenario-line { margin-bottom: 8px; }
+        
+        /* Вправи */
+        .exercise-card { 
+            background: #FFF8E1; border-radius: 8px; padding: 20px; margin-bottom: 20px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .exercise-title { 
+            color: #FF8F00; font-size: 1.2rem; margin-bottom: 15px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        .exercise-question { margin-bottom: 15px; color: #333; }
+        .answer-select { 
+            width: 100%; padding: 12px; border: 2px solid #FFECB3; border-radius: 6px; 
+            font-size: 1rem; margin-bottom: 15px; background-color: white; cursor: pointer; 
+        }
+        
+        .check-btn { 
+            background: #FFC107; color: #333; border: none; padding: 10px 20px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; transition: background 0.3s; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; 
+        }
+        .check-btn:hover { background: #FFB300; }
+        
+        .result-message { 
+            padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; 
+            font-weight: 600; display: none; animation: fadeIn 0.5s ease; 
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-message.correct { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .result-message.incorrect { background: #FFEBEE; color: #c62828; border: 1px solid #FFCDD2; }
+        
+        /* Поради */
+        .tip-box { 
+            background: #FFF3CD; padding: 15px; border-radius: 8px; margin-bottom: 15px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .tip-title { 
+            color: #FF8F00; font-weight: 600; margin-bottom: 10px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        
+        .topic-footer { 
+            text-align: center; padding: 20px; background: #FFF8E1; 
+            border-top: 1px solid #FFECB3; color: #FF8F00; 
+        }
+        .counter { 
+            background: #FFC107; color: #333; padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.9rem; display: inline-block; margin-bottom: 10px; 
+        }
+        
+        /* Аудіо симуляція */
+        .audio-simulation { 
+            background: #E3F2FD; padding: 15px; border-radius: 10px; margin: 15px 0; 
+            border-left: 4px solid #2196F3; 
+        }
+        .play-btn { 
+            background: #4CAF50; color: white; border: none; padding: 8px 15px; 
+            border-radius: 20px; cursor: pointer; display: inline-flex; 
+            align-items: center; gap: 8px; transition: background 0.3s; 
+        }
+        .play-btn:hover { background: #388E3C; }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-phone"></i> Temat 17: Rozmowa telefoniczna</h1>
+                <p class="subtitle">Telefonowanie, umawianie się, rozmowy formalne i nieformalne</p>
+                <div class="counter">Temat 17 z 26 | Dział: Komunikacja</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="komunikacja1.html" class="nav-button"><i class="fas fa-arrow-left"></i> Poprzedni temat</a>
+                <a href="komunikacja3.html" class="nav-button">Następny temat <i class="fas fa-arrow-right"></i></a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="phone-section">
+                        <h2 class="section-title"><i class="fas fa-mobile-alt"></i> Symulacja rozmowy telefonicznej</h2>
+                        
+                        <div class="phone-container">
+                            <div class="phone-screen">
+                                <div class="phone-call-info">
+                                    <div class="caller-name">Jan Kowalski</div>
+                                    <div class="call-time">Dzwoni...</div>
+                                </div>
+                                
+                                <div class="call-dialogue">
+                                    <div class="call-message incoming">
+                                        <div class="call-message-text">Halo, czy to Kasia?</div>
+                                        <div class="call-message-translation">Ало, це Кася?</div>
+                                    </div>
+                                    
+                                    <div class="call-message outgoing">
+                                        <div class="call-message-text">Tak, to ja. Cześć Janek!</div>
+                                        <div class="call-message-translation">Так, це я. Привіт Янек!</div>
+                                    </div>
+                                    
+                                    <div class="call-message incoming">
+                                        <div class="call-message-text">Cześć! Dzwonię, żeby się umówić na jutro.</div>
+                                        <div class="call-message-translation">Привіт! Дзвоню, щоб домовитися на завтра.</div>
+                                    </div>
+                                    
+                                    <div class="call-message outgoing">
+                                        <div class="call-message-text">Dobry pomysł! O której chcesz się spotkać?</div>
+                                        <div class="call-message-translation">Гарна ідея! О котрій хочеш зустрітися?</div>
+                                    </div>
+                                    
+                                    <div class="call-message incoming">
+                                        <div class="call-message-text">Może o 17:00 w kawiarni "Centralna"?</div>
+                                        <div class="call-message-translation">Може о 17:00 в кав'ярні "Centralna"?</div>
+                                    </div>
+                                    
+                                    <div class="call-message outgoing">
+                                        <div class="call-message-text">Dobrze, pasuje mi. Do zobaczenia jutro!</div>
+                                        <div class="call-message-translation">Добре, мені підходить. До завтра!</div>
+                                    </div>
+                                    
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="phone-buttons">
+                                <div class="phone-button accept" onclick="acceptCall()" title="Odbierz">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="phone-button" onclick="playMessage()" title="Odtwórz dialog">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="phone-button reject" onclick="rejectCall()" title="Odrzuć">
+                                    <i class="fas fa-phone-slash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="audio-simulation">
+                            <h3><i class="fas fa-volume-up"></i> Послухайте типові звуки телефону:</h3>
+                            <button class="play-btn" onclick="playSound('ringtone')">
+                                <i class="fas fa-play"></i> Дзвінок
+                            </button>
+                            <button class="play-btn" onclick="playSound('busy')">
+                                <i class="fas fa-play"></i> Сигнал зайнятості
+                            </button>
+                            <button class="play-btn" onclick="playSound('dial')">
+                                <i class="fas fa-play"></i> Набирання номера
+                            </button>
+                        </div>
+                    </section>
+                    
+                    <section class="scenarios-section">
+                        <h2 class="section-title"><i class="fas fa-comment-dots"></i> Typowe scenariusze rozmów</h2>
+                        
+                        <div class="scenario-cards">
+                            <div class="scenario-card">
+                                <div class="scenario-title"><i class="fas fa-user-md"></i> Запис на прийом до лікаря</div>
+                                <div class="scenario-dialog">
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Dzień dobry, chciałbym umówić się na wizytę.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Добрий день, хотів би записатися на прийом.</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Dobrze, na kiedy pan/pani chce?</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Добре, на коли ви хочете?</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Najlepiej w przyszły wtorek.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Найкраще в наступний вівторок.</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Mamy wolny termin o 14:30.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Маємо вільний термін о 14:30.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-card">
+                                <div class="scenario-title"><i class="fas fa-utensils"></i> Бронювання столика в ресторані</div>
+                                <div class="scenario-dialog">
+                                    <div class="scenario-line"><strong>Klient:</strong> Czy mogę zarezerwować stolik na dzisiaj wieczorem?</div>
+                                    <div class="scenario-line"><strong>Restauracja:</strong> Чи можу забронювати столик на сьогодні ввечері?</div>
+                                    <div class="scenario-line"><strong>Klient:</strong> Na ile osób i na którą godzinę?</div>
+                                    <div class="scenario-line"><strong>Restauracja:</strong> На скільки осіб і на яку годину?</div>
+                                    <div class="scenario-line"><strong>Klient:</strong> Na dwie osoby, na 19:00.</div>
+                                    <div class="scenario-line"><strong>Restauracja:</strong> На дві особи, на 19:00.</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Dobrze, zarezerwowane.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Добре, заброньовано.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-card">
+                                <div class="scenario-title"><i class="fas fa-briefcase"></i> Ділова розмова</div>
+                                <div class="scenario-dialog">
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Dzień dobry, czy mogę rozmawiać z panem Nowakiem?</div>
+                                    <div class="scenario-line"><strong>Sekretarka:</strong> Добрий день, чи можу поговорити з паном Новаком?</div>
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Niestety, pan Nowak jest w spotkaniu.</div>
+                                    <div class="scenario-line"><strong>Sekretarka:</strong> На жаль, пан Новак на нараді.</div>
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Czy może pani przekazać, że dzwonił pan Kowalski?</div>
+                                    <div class="scenario-line"><strong>Sekretarka:</strong> Чи можете передати, що дзвонив пан Ковальський?</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Oczywiście, przekażę.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Звичайно, передам.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-card">
+                                <div class="scenario-title"><i class="fas fa-question-circle"></i> Запит інформації</div>
+                                <div class="scenario-dialog">
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Przepraszam, czy sklep jest otwarty w niedzielę?</div>
+                                    <div class="scenario-line"><strong>Sklep:</strong> Вибачте, чи магазин відкритий у неділю?</div>
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Tak, w niedzielę pracujemy od 10:00 do 18:00.</div>
+                                    <div class="scenario-line"><strong>Sklep:</strong> Так, у неділю працюємо з 10:00 до 18:00.</div>
+                                    <div class="scenario-line"><strong>Dzwoniący:</strong> Dziękuję za informację.</div>
+                                    <div class="scenario-line"><strong>Sklep:</strong> Дякую за інформацію.</div>
+                                    <div class="scenario-line"><strong>Pacjent:</strong> Proszę bardzo, do widzenia.</div>
+                                    <div class="scenario-line"><strong>Recepcja:</strong> Будь ласка, до побачення.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-headset"></i> Ćwiczenia telefoniczne</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1: Rozpoczęcie rozmowy</h3>
+                            <p class="exercise-question">Dzwonisz do firmy. Jak rozpoczniesz rozmowę?</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Halo, jest ktoś?">Halo, jest ktoś?</option>
+                                <option value="Dzień dobry, nazywam się...">Dzień dobry, nazywam się...</option>
+                                <option value="Cześć, co słychać?">Cześć, co słychać?</option>
+                                <option value="Odbierz telefon!">Odbierz telefon!</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2: Prośba o rozmowę</h3>
+                            <p class="exercise-question">Chcesz rozmawiać z konkretną osobą w firmie. Co powiesz?</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Daj mi tę osobę!">Daj mi tę osobę!</option>
+                                <option value="Czy mogę rozmawiać z panem Nowakiem?">Czy mogę rozmawiać z panem Nowakiem?</option>
+                                <option value="Potrzebuję kogoś!">Potrzebuję kogoś!</option>
+                                <option value="Gdzie jest szef?">Gdzie jest szef?</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3: Umawianie spotkania</h3>
+                            <p class="exercise-question">Jak zapytasz o możliwość spotkania w przyszłym tygodniu?</p>
+                            
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Spotkamy się w przyszłym tygodniu?">Spotkamy się w przyszłym tygodniu?</option>
+                                <option value="Chcę się z tobą spotkać za tydzień.">Chcę się z tobą spotkać za tydzień.</option>
+                                <option value="Czy możemy się umówić w przyszłym tygodniu?">Czy możemy się umówić w przyszłym tygodniu?</option>
+                                <option value="Bądź tam za tydzień!">Bądź tam za tydzień!</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Wskazówki telefoniczne</h2>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-microphone"></i> Говоріть чітко</div>
+                            <p>У телефонній розмові ми не бачимо співрозмовника, тому вимова особливо важлива.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-clock"></i> Називайте час</div>
+                            <p>Говорячи про час, використовуйте 24-годинний формат: 14:30, 19:00.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-sticky-note"></i> Записуйте інформацію</div>
+                            <p>Тримайте під рукою папір і ручку, щоб записати важливу інформацію.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-phone-volume"></i> Вислови для початку розмови</div>
+                            <p><strong>Формально:</strong> "Dzień dobry, nazywam się..."<br>
+                            <strong>Неформально:</strong> "Cześć, to ja..."</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-phone-slash"></i> Завершення розмови</div>
+                            <p>Завжди прощайтеся: "Do widzenia", "Do usłyszenia", "Miłego dnia".</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 20: Rozmowa telefoniczna</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "Dzień dobry, nazywam się...",
+            2: "Czy mogę rozmawiać z panem Nowakiem?",
+            3: "Czy możemy się umówić w przyszłym tygodniu?"
+        };
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Відмінно впоралися!`;
+                resultElement.className = 'result-message correct';
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Спробуйте ще раз!`;
+                resultElement.className = 'result-message incorrect';
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Функції для симуляції телефону
+        function acceptCall() {
+            showNotification('Розмову прийнято! Починаєте розмову з Янеком.');
+            animateCall('accepted');
+        }
+        
+        function rejectCall() {
+            showNotification('Розмову відхилено. Можете передзвонити пізніше.');
+            animateCall('rejected');
+        }
+        
+        function playMessage() {
+            const messages = [
+                "Halo, czy to Kasia?",
+                "Tak, to ja. Cześć Janek!",
+                "Cześć! Dzwonię, żeby się umówić na jutro.",
+                "Dobry pomysł! O której chcesz się spotkać?",
+                "Może o 17:00 w kawiarni 'Centralna'?",
+                "Dobrze, pasuje mi. Do zobaczenia jutro!"
+            ];
+            
+            let index = 0;
+            function playNext() {
+                if (index < messages.length) {
+                    speakText(messages[index]);
+                    index++;
+                    setTimeout(playNext, 2000);
+                }
+            }
+            playNext();
+        }
+        
+        function playSound(soundType) {
+            const sounds = {
+                'ringtone': 'Дзвінок телефону... brr-brr, brr-brr',
+                'busy': 'Сигнал зайнятості... pip-pip-pip',
+                'dial': 'Звук набору номера... pip-pip-pip'
+            };
+            
+            speakText(sounds[soundType]);
+            showNotification(`Відтворення: ${sounds[soundType]}`);
+        }
+        
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'pl-PL';
+                utterance.rate = 0.9;
+                speechSynthesis.speak(utterance);
+            }
+        }
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; 
+                background: #4CAF50; color: white; padding: 15px 20px;
+                border-radius: 8px; z-index: 1000; font-size: 1rem;
+                animation: slideIn 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 3000);
+        }
+        
+        function animateCall(status) {
+            const callInfo = document.querySelector('.call-time');
+            if (status === 'accepted') {
+                callInfo.textContent = 'Розмова триває... 00:45';
+                callInfo.style.color = '#4CAF50';
+            } else {
+                callInfo.textContent = 'Розмова завершена';
+                callInfo.style.color = '#f44336';
+            }
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Анімація телефону
+            const phoneContainer = document.querySelector('.phone-container');
+            phoneContainer.style.opacity = '0';
+            phoneContainer.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                phoneContainer.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                phoneContainer.style.opacity = '1';
+                phoneContainer.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

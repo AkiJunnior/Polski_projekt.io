@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 17: Strona bierna i czynna | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page { background-color: #f0f8ff; min-height: 100vh; padding: 20px 0; }
+        .topic-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(33, 150, 243, 0.1); overflow: hidden; margin-bottom: 30px; }
+        .topic-header { background: linear-gradient(135deg, #2196F3, #0D47A1); color: white; padding: 30px; text-align: center; }
+        .topic-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .topic-header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; }
+        .topic-nav { display: flex; justify-content: space-between; padding: 20px 30px; background-color: #E3F2FD; border-bottom: 1px solid #BBDEFB; }
+        .nav-button { color: #2196F3; text-decoration: none; padding: 10px 20px; border-radius: 8px; background-color: white; border: 2px solid #2196F3; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-button:hover { background-color: #2196F3; color: white; }
+        .content-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 30px; padding: 30px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+        
+        .grammar-section, .practice-section, .tips-section { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.05); margin-bottom: 25px; }
+        .section-title { color: #2196F3; font-size: 1.8rem; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #E3F2FD; display: flex; align-items: center; gap: 12px; }
+        
+        .voice-comparison { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px; }
+        .voice-card { background: #E3F2FD; border-radius: 8px; padding: 25px; text-align: center; }
+        .voice-card.active { border-top: 4px solid #4CAF50; }
+        .voice-card.passive { border-top: 4px solid #FF9800; }
+        .voice-title { font-size: 1.6rem; font-weight: bold; margin-bottom: 15px; }
+        .voice-card.active .voice-title { color: #2E7D32; }
+        .voice-card.passive .voice-title { color: #EF6C00; }
+        .voice-example { font-size: 1.2rem; margin: 15px 0; padding: 10px; background: white; border-radius: 6px; }
+        
+        .construction-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .construction-table th, .construction-table td { border: 1px solid #BBDEFB; padding: 12px; text-align: left; }
+        .construction-table th { background-color: #2196F3; color: white; }
+        .construction-table tr:nth-child(even) { background-color: #E3F2FD; }
+        
+        .transformation-box { background: #FFF3E0; border-radius: 8px; padding: 20px; margin: 20px 0; border-left: 4px solid #FF9800; }
+        .transformation-title { color: #EF6C00; font-size: 1.3rem; margin-bottom: 15px; }
+        .arrow { display: block; text-align: center; font-size: 2rem; color: #2196F3; margin: 10px 0; }
+        
+        .rule-box { background: #E3F2FD; border-radius: 8px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #2196F3; }
+        .rule-title { color: #1565C0; font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .exercise-card { background: #F9F9F9; border-radius: 8px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #2196F3; }
+        .exercise-title { color: #1565C0; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .exercise-question { margin-bottom: 15px; color: #333; }
+        .answer-select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; margin-bottom: 15px; background-color: white; cursor: pointer; }
+        
+        .check-btn { background: #2196F3; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; }
+        .check-btn:hover { background: #1976D2; }
+        
+        .result-message { padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; font-weight: 600; display: none; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-message.correct { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .result-message.incorrect { background: #FFEBEE; color: #c62828; border: 1px solid #FFCDD2; }
+        
+        .tip-box { background: #E3F2FD; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #2196F3; }
+        .tip-title { color: #1565C0; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .topic-footer { text-align: center; padding: 20px; background: #E3F2FD; border-top: 1px solid #BBDEFB; color: #1565C0; }
+        .counter { background: #2196F3; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-bottom: 10px; }
+        .highlight { background: #FFF9C4; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-exchange-alt"></i> Temat 17: Strona bierna i czynna</h1>
+                <p class="subtitle">Konstrukcje czynne i bierne w zdaniu</p>
+                <div class="counter">Temat 17 z 26 | Dział: Gramatyka</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="gramatyka8.html" class="nav-button"><i class="fas fa-arrow-left"></i> Poprzedni temat</a>
+                <a href="gramatyka10.html" class="nav-button">Następny temat <i class="fas fa-arrow-right"></i></a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="grammar-section">
+                        <h2 class="section-title"><i class="fas fa-balance-scale"></i> Porównanie stron</h2>
+                        
+                        <div class="voice-comparison">
+                            <div class="voice-card active">
+                                <div class="voice-title">Strona czynna</div>
+                                <p>Podmiot wykonuje czynność</p>
+                                <div class="voice-example">Jan czyta książkę.</div>
+                                <p><strong>Struktura:</strong> ktoś coś robi</p>
+                                <p><strong>Akcent:</strong> na wykonawcy czynności</p>
+                            </div>
+                            
+                            <div class="voice-card passive">
+                                <div class="voice-title">Strona bierna</div>
+                                <p>Podmiot jest obiektem czynności</p>
+                                <div class="voice-example">Książka jest czytana przez Jana.</div>
+                                <p><strong>Struktura:</strong> coś jest robione przez kogoś</p>
+                                <p><strong>Akcent:</strong> na obiekcie czynności</p>
+                            </div>
+                        </div>
+                        
+                        <div class="transformation-box">
+                            <div class="transformation-title">Przekształcanie zdań</div>
+                            <div class="voice-example">Jan pisze list.</div>
+                            <div class="arrow">↓</div>
+                            <div class="voice-example">List jest pisany przez Jana.</div>
+                            <div style="margin-top: 15px; color: #555;">
+                                <strong>Zmiany:</strong><br>
+                                1. Podmiot → dopełnienie z "przez"<br>
+                                2. Orzeczenie → "być" + imiesłów<br>
+                                3. Dopełnienie → podmiot
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="grammar-section">
+                        <h2 class="section-title"><i class="fas fa-cogs"></i> Konstrukcja strony biernej</h2>
+                        
+                        <table class="construction-table">
+                            <thead>
+                                <tr>
+                                    <th>Czas</th>
+                                    <th>Forma czasownika "być"</th>
+                                    <th>Imiesłów</th>
+                                    <th>Przykład</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Teraźniejszy</strong></td>
+                                    <td>jest, są</td>
+                                    <td>czytany, pisana, robione</td>
+                                    <td>Książka jest czytana.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Przeszły</strong></td>
+                                    <td>był, była, było, byli, były</td>
+                                    <td>czytany, pisana, robione</td>
+                                    <td>List był pisany.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Przyszły</strong></td>
+                                    <td>będzie, będą</td>
+                                    <td>czytany, pisana, robione</td>
+                                    <td>Zadanie będzie robione.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-exclamation-circle"></i> Tworzenie imiesłowów</h3>
+                            <p>Imiesłów przymiotnikowy bierny tworzymy od czasownika:</p>
+                            <ul>
+                                <li><strong>-any</strong> dla czasowników na -ać: czytać → czytany</li>
+                                <li><strong>-ony</strong> dla czasowników na -ić, -yć: myć → myty, mówić → mówiony</li>
+                                <li><strong>-ty</strong> dla niektórych czasowników: umyć → umyty</li>
+                            </ul>
+                            <p>Imiesłów <span class="highlight">zgadza się z podmiotem w rodzaju i liczbie</span>.</p>
+                        </div>
+                    </section>
+                    
+                    <section class="grammar-section">
+                        <h2 class="section-title"><i class="fas fa-question-circle"></i> Kiedy używamy strony biernej?</h2>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-check"></i> Sytuacje użycia</h3>
+                            <p>Strona bierna jest używana gdy:</p>
+                            <ul>
+                                <li>Nie znamy wykonawcy czynności: <em>Okno zostało otwarte.</em></li>
+                                <li>Wykonawca jest nieistotny: <em>Budowa została ukończona.</em></li>
+                                <li>Chcemy podkreślić obiekt czynności: <em>Nagrody zostały wręczone.</em></li>
+                                <li>W tekstach naukowych i formalnych: <em>Badania zostały przeprowadzone.</em></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rule-box">
+                            <h3 class="rule-title"><i class="fas fa-times"></i> Kiedy unikać strony biernej?</h3>
+                            <p>W mowie potocznej strona czynna jest częstsza i naturalniejsza.</p>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1</h3>
+                            <p class="exercise-question">Które zdanie jest w stronie biernej?</p>
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Jan czyta książkę.">Jan czyta książkę.</option>
+                                <option value="Książka jest czytana przez Jana.">Książka jest czytana przez Jana.</option>
+                                <option value="Dzieci bawią się w ogrodzie.">Dzieci bawią się w ogrodzie.</option>
+                            </select>
+                            <button class="check-btn" onclick="checkAnswer(1)"><i class="fas fa-check"></i> Sprawdź</button>
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2</h3>
+                            <p class="exercise-question">Jak tworzymy stronę bierną?</p>
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="czasownik + się">czasownik + się</option>
+                                <option value="być + imiesłów">być + imiesłów</option>
+                                <option value="mieć + imiesłów">mieć + imiesłów</option>
+                                <option value="czasownik w czasie przeszłym">czasownik w czasie przeszłym</option>
+                            </select>
+                            <button class="check-btn" onclick="checkAnswer(2)"><i class="fas fa-check"></i> Sprawdź</button>
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3</h3>
+                            <p class="exercise-question">Jaki imiesłów od "pisać"?</p>
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="pisany">pisany</option>
+                                <option value="piszący">piszący</option>
+                                <option value="napisany">napisany</option>
+                                <option value="pisząc">pisząc</option>
+                            </select>
+                            <button class="check-btn" onclick="checkAnswer(3)"><i class="fas fa-check"></i> Sprawdź</button>
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Wskazówki</h2>
+                        <div class="tip-box"><div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 1</div><p>Strona bierna = "być" + imiesłów na -any/-ony/-ty.</p></div>
+                        <div class="tip-box"><div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 2</div><p>Wykonawcę wprowadzamy przez "przez" + biernik.</p></div>
+                        <div class="tip-box"><div class="tip-title"><i class="fas fa-check-circle"></i> Wskazówka 3</div><p>Imiesłów zgadza się z podmiotem: była pisana, był pisany.</p></div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2026 | Temat 17: Strona bierna i czynna</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: "Książka jest czytana przez Jana.",
+            2: "być + imiesłów",
+            3: "pisany"
+        };
+        
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            resultElement.innerHTML = isCorrect ? 
+                `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong>` : 
+                `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong>`;
+            resultElement.className = `result-message ${isCorrect ? 'correct' : 'incorrect'}`;
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-date').textContent = new Date().toLocaleDateString('pl-PL', { 
+                year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+            });
+            document.querySelectorAll('.answer-select').forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultElement = document.getElementById(this.id.replace('select', 'result'));
+                    if (resultElement) resultElement.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

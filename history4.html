@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 24: System edukacji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #e3f2fd; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(to right, #1565c0, #0d47a1); color: white; padding: 30px; border-radius: 15px 15px 0 0; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { opacity: 0.9; margin: 10px 0 20px; }
+        nav { display: flex; justify-content: space-between; padding: 20px; background: #bbdefb; }
+        .nav-button { padding: 10px 20px; background: white; border: 2px solid #1565c0; color: #1565c0; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; background: white; }
+        @media (max-width: 768px) { .content { grid-template-columns: 1fr; } }
+        .section { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .section-title { color: #1565c0; border-bottom: 3px solid #bbdefb; padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; }
+        .level { background: #e3f2fd; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #1565c0; }
+        .audio-btn { background: #1565c0; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .fact-box { background: #bbdefb; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #1565c0; }
+        .quiz { background: #fff3e0; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .quiz-option { background: white; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; border: 2px solid #ffecb3; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .stat-card { background: white; padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #bbdefb; }
+        .stat-number { font-size: 1.8rem; color: #1565c0; font-weight: bold; }
+        footer { text-align: center; padding: 20px; background: #bbdefb; margin-top: 30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Temat 24: System edukacji</h1>
+        <div class="subtitle">Szkoła, studia, nauka w Polsce</div>
+    </header>
+    
+    <nav>
+        <a href="history3.html" class="nav-button">← Poprzedni temat</a>
+        <a href="history5.html" class="nav-button">Następny temat →</a>
+    </nav>
+    
+    <div class="content">
+        <div class="left-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Struktura systemu</h2>
+                
+                <div class="level">
+                    <h3>Przedszkole (3-6 lat)</h3>
+                    <p>Ostatni rok (zerówka) obowiązkowy. Przygotowanie do szkoły, rozwój społeczny.</p>
+                </div>
+                
+                <div class="level">
+                    <h3>Szkoła podstawowa (7-15 lat)</h3>
+                    <p>8 lat nauki (klasy 1-8). Obowiązkowa. Egzamin ósmoklasisty na koniec.</p>
+                </div>
+                
+                <div class="level">
+                    <h3>Szkoła średnia (16-20 lat)</h3>
+                    <p>Liceum (4 lata), technikum (5 lat) lub szkoła branżowa (3 lata). Matura na koniec liceum i technikum.</p>
+                </div>
+                
+                <div class="fact-box">
+                    <p><strong>Reforma 2017:</strong> Zlikwidowano gimnazja, przywrócono 8-letnią podstawówkę i 4-letnie liceum.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-school"></i> Typy szkół średnich</h2>
+                
+                <div class="stats">
+                    <div class="stat-card" onclick="showInfo('liceum')">
+                        <div class="stat-number">4 lata</div>
+                        <div>Liceum Ogólnokształcące</div>
+                    </div>
+                    <div class="stat-card" onclick="showInfo('technikum')">
+                        <div class="stat-number">5 lat</div>
+                        <div>Technikum</div>
+                    </div>
+                    <div class="stat-card" onclick="showInfo('zawodowa')">
+                        <div class="stat-number">3 lata</div>
+                        <div>Szkoła Branżowa</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">85%</div>
+                        <div>Zdawalność matury</div>
+                    </div>
+                </div>
+                
+                <div id="school-info" style="display: none; padding: 15px; background: #e3f2fd; border-radius: 8px; margin-top: 15px;"></div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Quiz edukacyjny</h2>
+                
+                <div class="quiz">
+                    <p><strong>Ile lat trwa szkoła podstawowa w Polsce?</strong></p>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'correct')">8 lat</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">6 lat</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">7 lat</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">9 lat</div>
+                    <div id="quiz-result" style="margin-top: 15px; padding: 10px; border-radius: 6px; display: none;"></div>
+                </div>
+                
+                <div class="quiz">
+                    <p><strong>Która szkoła daje zawód i maturę?</strong></p>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'correct')">Technikum</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">Liceum</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">Szkoła branżowa</div>
+                    <div class="quiz-option" onclick="checkQuiz(this, 'wrong')">Podstawówka</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i> Egzaminy</h2>
+                
+                <div class="level" style="background: #fff3e0;">
+                    <h3>Egzamin ósmoklasisty</h3>
+                    <p>Przedmioty: polski, matematyka, język obcy. Wynik decyduje o przyjęciu do szkoły średniej.</p>
+                </div>
+                
+                <div class="level" style="background: #fff3e0;">
+                    <h3>Matura</h3>
+                    <p>Obowiązkowa: polski, matematyka, język obcy (ustnie i pisemnie). Dodatkowo przedmioty rozszerzone.</p>
+                </div>
+                
+                <button class="audio-btn" onclick="playAudio('Egzamin ósmoklasisty składa się z języka polskiego, matematyki i języka obcego. Matura obejmuje te same przedmioty obowiązkowo plus przedmioty rozszerzone.')" style="width: 100%;">Słuchaj o egzaminach</button>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-university"></i> Studia w Polsce</h2>
+                <p><strong>Stopnie:</strong> licencjat/inżynier (3-3.5 roku), magister (2 lata), doktor (4 lata)</p>
+                <p><strong>Typy uczelni:</strong> uniwersytety, politechniki, akademie</p>
+                <p><strong>Najlepsze uczelnie:</strong> UW, UJ, Politechnika Warszawska, UAM</p>
+                <div class="fact-box">
+                    <p><strong>Ciekawostka:</strong> Polska ma jeden z najwyższych wskaźników osób z wyższym wykształceniem w UE - około 45% osób w wieku 25-34 lata.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Projekt z języka polskiego © 2024 | Temat 24: System edukacji</p>
+        <p>Ostatnia aktualizacja: <span id="date"></span></p>
+    </footer>
+</div>
+
+<script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString('pl-PL');
+    
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pl-PL';
+            utterance.rate = 0.9;
+            speechSynthesis.speak(utterance);
+        }
+    }
+    
+    function showInfo(type) {
+        const info = document.getElementById('school-info');
+        let text = '';
+        if (type === 'liceum') {
+            text = '<strong>Liceum Ogólnokształcące (4 lata)</strong> - przygotowuje do matury i studiów. Profile: humanistyczny, matematyczno-fizyczny, biologiczno-chemiczny.';
+        } else if (type === 'technikum') {
+            text = '<strong>Technikum (5 lat)</strong> - zawód + matura. Po zdaniu egzaminów zawodowych otrzymuje się tytuł technika. Popularne kierunki: informatyk, ekonomista, hotelarz.';
+        } else {
+            text = '<strong>Szkoła Branżowa I stopnia (3 lata)</strong> - nauka zawodu. Po ukończeniu można pracować lub kontynuować w szkole II stopnia. Nie daje matury.';
+        }
+        info.innerHTML = text + '<br><button class="audio-btn" onclick="playAudio(\'' + text.replace(/<[^>]*>/g, '') + '\')" style="margin-top: 10px;">Słuchaj</button>';
+        info.style.display = 'block';
+    }
+    
+    function checkQuiz(element, type) {
+        const result = document.getElementById('quiz-result');
+        const options = element.parentElement.querySelectorAll('.quiz-option');
+        
+        options.forEach(opt => {
+            opt.style.background = '';
+            opt.style.color = '';
+        });
+        
+        if (type === 'correct') {
+            element.style.background = '#4CAF50';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Poprawnie!</strong>';
+            result.style.background = '#E8F5E9';
+            result.style.color = '#2E7D32';
+            playAudio('Dobrze! Szkoła podstawowa trwa 8 lat, a technikum daje zawód i maturę.');
+        } else {
+            element.style.background = '#f44336';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Niepoprawnie. Spróbuj jeszcze raz!</strong>';
+            result.style.background = '#FFEBEE';
+            result.style.color = '#c62828';
+            playAudio('Niepoprawnie. Spróbuj jeszcze raz!');
+        }
+        result.style.display = 'block';
+    }
+    
+    setTimeout(() => {
+        playAudio('Witaj w temacie o systemie edukacji w Polsce. Poznasz strukturę szkolnictwa, typy szkół i egzaminy.');
+    }, 1000);
+</script>
+</body>
+</html>

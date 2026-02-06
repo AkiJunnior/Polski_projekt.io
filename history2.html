@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 22: Święta i tradycje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff3e0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(to right, #ff9800, #f57c00); color: white; padding: 30px; border-radius: 15px 15px 0 0; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { opacity: 0.9; margin: 10px 0 20px; }
+        nav { display: flex; justify-content: space-between; padding: 20px; background: #ffecb3; }
+        .nav-button { padding: 10px 20px; background: white; border: 2px solid #ff9800; color: #ff9800; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; background: white; }
+        @media (max-width: 768px) { .content { grid-template-columns: 1fr; } }
+        .section { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .section-title { color: #ff9800; border-bottom: 3px solid #ffe0b2; padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; }
+        .holiday-card { background: #fff3e0; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #ff9800; }
+        .audio-btn { background: #ff9800; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .fact-box { background: #ffecb3; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ff9800; }
+        .quiz { background: #fff3e0; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .quiz-option { background: white; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; border: 2px solid #ffecb3; }
+        .tradition { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding: 15px; background: #fff8e1; border-radius: 8px; }
+        .tradition-icon { background: #ff9800; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        footer { text-align: center; padding: 20px; background: #ffecb3; margin-top: 30px; }
+        .calendar { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 15px 0; }
+        .month-card { background: white; padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #ffe0b2; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Temat 22: Święta i tradycje</h1>
+        <div class="subtitle">Tradycje świąteczne i obyczaje polskie</div>
+    </header>
+    
+    <nav>
+        <a href="history1.html" class="nav-button">← Poprzedni temat</a>
+        <a href="history3.html" class="nav-button">Następny temat →</a>
+    </nav>
+    
+    <div class="content">
+        <div class="left-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-holly-berry"></i> Święta główne</h2>
+                
+                <div class="holiday-card">
+                    <h3>Wigilia (24 grudnia)</h3>
+                    <p>Rozpoczyna się z pierwszą gwiazdą. 12 postnych potraw, dzielenie się opłatkiem, pasterka o północy. Pod obrusem siano.</p>
+                    <button class="audio-btn" onclick="playAudio('Wigilia 24 grudnia. Rozpoczyna się z pierwszą gwiazdą. Dwanaście potraw postnych, dzielenie się opłatkiem, pasterka o północy.')">Słuchaj</button>
+                </div>
+                
+                <div class="holiday-card">
+                    <h3>Wielkanoc</h3>
+                    <p>Najważniejsze święto chrześcijańskie. Święcenie pokarmów w koszyczku, śniadanie wielkanocne, Śmigus-Dyngus (lany poniedziałek).</p>
+                    <button class="audio-btn" onclick="playAudio('Wielkanoc to najważniejsze święto chrześcijańskie. W Wielką Sobotę święci się pokarmy, w poniedziałek jest Śmigus-Dyngus - polewanie się wodą.')">Słuchaj</button>
+                </div>
+                
+                <div class="fact-box">
+                    <p><strong>Ciekawostka:</strong> Opłatek wigilijny ma korzenie w starożytnym chrześcijaństwie. W Polsce zwyczaj dzielenia się opłatkiem jest niezwykle ważny i niepowtarzalny w Europie.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-hands"></i> Tradycje i zwyczaje</h2>
+                
+                <div class="tradition">
+                    <div class="tradition-icon"><i class="fas fa-water"></i></div>
+                    <div>
+                        <h3>Śmigus-Dyngus</h3>
+                        <p>Lany poniedziałek wielkanocny. Polewanie się wodą symbolizujące oczyszczenie i wiosenne odrodzenie.</p>
+                    </div>
+                </div>
+                
+                <div class="tradition">
+                    <div class="tradition-icon"><i class="fas fa-fire"></i></div>
+                    <div>
+                        <h3>Andrzejki (29 listopada)</h3>
+                        <p>Wieczór wróżb matrymonialnych. Lanie wosku, ustawianie butów, wróżenie z kart.</p>
+                    </div>
+                </div>
+                
+                <div class="tradition">
+                    <div class="tradition-icon"><i class="fas fa-gift"></i></div>
+                    <div>
+                        <h3>Mikołajki (6 grudnia)</h3>
+                        <p>Święty Mikołaj przynosi prezenty dzieciom. W niektórych regionach prezenty przynosi Gwiazdor lub Aniołek.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Kalendarz świąt</h2>
+                
+                <div class="calendar">
+                    <div class="month-card" onclick="showMonth('1 stycznia', 'Nowy Rok - dzień wolny')">1 I<br>Nowy Rok</div>
+                    <div class="month-card" onclick="showMonth('6 stycznia', 'Trzech Króli - orszaki uliczne')">6 I<br>Trzech Króli</div>
+                    <div class="month-card" onclick="showMonth('1 maja', 'Święto Pracy - dawniej pochody')">1 V<br>Święto Pracy</div>
+                    <div class="month-card" onclick="showMonth('3 maja', 'Konstytucja 3 Maja - uroczystości')">3 V<br>Konstytucja 3 Maja</div>
+                    <div class="month-card" onclick="showMonth('Boże Ciało', 'Procesje uliczne, ołtarze')">Boże Ciało<br>(ruchome)</div>
+                    <div class="month-card" onclick="showMonth('15 sierpnia', 'Wniebowzięcie NMP, Święto Wojska Polskiego')">15 VIII<br>Matki Boskiej</div>
+                    <div class="month-card" onclick="showMonth('1 listopada', 'Wszystkich Świętych - cmentarze')">1 XI<br>Wszystkich Świętych</div>
+                    <div class="month-card" onclick="showMonth('11 listopada', 'Święto Niepodległości - parady')">11 XI<br>Niepodległości</div>
+                    <div class="month-card" onclick="showMonth('25-26 grudnia', 'Boże Narodzenie - dni rodzinne')">25-26 XII<br>Boże Narodzenie</div>
+                </div>
+                
+                <div id="month-info" style="padding: 15px; background: #fff8e1; border-radius: 8px; margin-top: 15px; display: none;"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Quiz tradycji</h2>
+                
+                <div class="quiz">
+                    <p><strong>Ile potraw powinno być na wigilijnym stole?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">12 potraw</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">7 potraw</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">9 potraw</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">13 potraw</div>
+                    <div id="quiz-result" style="margin-top: 15px; padding: 10px; border-radius: 6px; display: none;"></div>
+                </div>
+                
+                <div class="quiz">
+                    <p><strong>Co święci się w Wielką Sobotę?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Pokarmy w koszyczku</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Wodę w studni</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Dom i obejście</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Zwierzęta domowe</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-star"></i> Tradycje regionalne</h2>
+                <p><strong>Podhale:</strong> Jasełka góralskie, bacówki z oscypkiem</p>
+                <p><strong>Kaszuby:</strong> Ścinanie kani, tradycje morskie</p>
+                <p><strong>Śląsk:</strong> Kolędy w gwarze śląskiej, kołocz</p>
+                <p><strong>Kurpie:</strong> Palmy wielkanocne, wycinanki</p>
+                
+                <div class="fact-box">
+                    <p><strong>Statystyka:</strong> 90% Polaków deklaruje udział w wigilii rodzinnej, a 76% w święceniu pokarmów wielkanocnych.</p>
+                </div>
+                
+                <button class="audio-btn" onclick="playAudio('Polskie tradycje różnią się w zależności od regionu. Na Podhalu są jasełka góralskie, na Kaszubach tradycje morskie, na Śląsku kolędy w gwarze.')" style="width: 100%;">Słuchaj o regionach</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Projekt z języka polskiego © 2024 | Temat 22: Święta i tradycje</p>
+        <p>Ostatnia aktualizacja: <span id="date"></span></p>
+    </footer>
+</div>
+
+<script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString('pl-PL');
+    
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pl-PL';
+            utterance.rate = 0.9;
+            speechSynthesis.speak(utterance);
+        }
+    }
+    
+    function showMonth(date, description) {
+        const info = document.getElementById('month-info');
+        info.innerHTML = `<strong>${date}</strong><br>${description}`;
+        info.style.display = 'block';
+        playAudio(`${date}. ${description}`);
+    }
+    
+    function checkAnswer(element, type) {
+        const result = document.getElementById('quiz-result');
+        const options = element.parentElement.querySelectorAll('.quiz-option');
+        
+        options.forEach(opt => {
+            opt.style.background = '';
+            opt.style.color = '';
+        });
+        
+        if (type === 'correct') {
+            element.style.background = '#4CAF50';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Poprawnie!</strong>';
+            result.style.background = '#E8F5E9';
+            result.style.color = '#2E7D32';
+            playAudio('Dobrze! Na wigilii powinno być 12 potraw, a w Wielką Sobotę święci się pokarmy w koszyczku.');
+        } else {
+            element.style.background = '#f44336';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Niepoprawnie. Spróbuj jeszcze raz!</strong>';
+            result.style.background = '#FFEBEE';
+            result.style.color = '#c62828';
+            playAudio('Niepoprawnie. Spróbuj jeszcze raz!');
+        }
+        result.style.display = 'block';
+    }
+    
+    setTimeout(() => {
+        playAudio('Witaj w temacie o świętach i tradycjach polskich. Poznasz najważniejsze święta, zwyczaje i tradycje regionalne.');
+    }, 1000);
+</script>
+</body>
+</html>

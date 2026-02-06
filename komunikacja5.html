@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 20: Plany i organizacja | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page { background-color: #E8F5E9; min-height: 100vh; padding: 20px 0; }
+        .topic-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1); overflow: hidden; margin-bottom: 30px; }
+        .topic-header { background: linear-gradient(135deg, #FF8F00, #FF8F00); color: white; padding: 30px; text-align: center; }
+        .topic-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .topic-header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; }
+        .topic-nav { display: flex; justify-content: space-between; padding: 20px 30px; background-color: #E8F5E9; border-bottom: 1px solid #C8E6C9; }
+        .nav-button { color: #FF8F00; text-decoration: none; padding: 10px 20px; border-radius: 8px; background-color: white; border: 2px solid #388E3C; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-button:hover { background-color: #FF8F00; color: white; }
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+        
+        .dialogue-section, .calendar-section, .practice-section, .tips-section { 
+            background: white; border-radius: 10px; padding: 25px; 
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.05); margin-bottom: 25px; 
+        }
+        .section-title { 
+            color: #388E3C; font-size: 1.8rem; margin-bottom: 25px; padding-bottom: 15px; 
+            border-bottom: 2px solid #C8E6C9; display: flex; align-items: center; gap: 12px; 
+        }
+        
+        /* Діалогові бульбашки */
+        .dialogue-container { margin: 25px 0; }
+        .dialogue-bubble { 
+            display: flex; margin-bottom: 20px; max-width: 80%; 
+            animation: fadeInUp 0.5s ease forwards; opacity: 0; 
+        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .dialogue-bubble:nth-child(1) { animation-delay: 0.1s; transform: translateY(20px); }
+        .dialogue-bubble:nth-child(2) { animation-delay: 0.3s; transform: translateY(20px); margin-left: auto; }
+        .dialogue-bubble:nth-child(3) { animation-delay: 0.5s; transform: translateY(20px); }
+        .dialogue-bubble:nth-child(4) { animation-delay: 0.7s; transform: translateY(20px); margin-left: auto; }
+        
+        .dialogue-avatar { 
+            width: 50px; height: 50px; border-radius: 50%; background: #C8E6C9; 
+            display: flex; align-items: center; justify-content: center; margin-right: 15px; 
+            flex-shrink: 0; border: 2px solid #4CAF50; 
+        }
+        .dialogue-avatar.marta { background: #FFF3E0; border-color: #FFC107; }
+        .dialogue-avatar.piotr { background: #E8F5E9; border-color: #4CAF50; }
+        
+        .dialogue-content { flex: 1; }
+        .dialogue-name { font-weight: bold; color: #388E3C; margin-bottom: 5px; }
+        .dialogue-text { 
+            background: #E8F5E9; padding: 15px; border-radius: 15px; border-top-left-radius: 0; 
+            position: relative; border: 1px solid #C8E6C9; 
+        }
+        .dialogue-bubble:nth-child(even) .dialogue-text { 
+            background: #FFF3CD; border-color: #FFECB3; border-top-left-radius: 15px; 
+            border-top-right-radius: 0; 
+        }
+        .dialogue-bubble:nth-child(even) .dialogue-name { color: #FF8F00; }
+        .dialogue-translation { 
+            font-size: 0.9rem; color: #666; margin-top: 8px; padding-left: 10px; 
+            border-left: 3px solid #4CAF50; 
+        }
+        .dialogue-bubble:nth-child(even) .dialogue-translation { border-left-color: #FFC107; }
+        
+        /* Інтерактивний календар */
+        .calendar-container { 
+            background: #FFF8E1; border-radius: 10px; padding: 20px; margin: 20px 0; 
+            border: 2px solid #FFECB3; 
+        }
+        .calendar-week { display: flex; gap: 10px; margin: 20px 0; }
+        .calendar-day { 
+            flex: 1; background: white; border-radius: 8px; padding: 15px; 
+            text-align: center; cursor: pointer; transition: all 0.3s;
+            border: 2px solid #E8F5E9; 
+        }
+        .calendar-day:hover { border-color: #4CAF50; transform: translateY(-5px); }
+        .calendar-day.selected { border-color: #2196F3; background: #E3F2FD; }
+        .day-name { font-weight: bold; color: #388E3C; margin-bottom: 5px; }
+        .day-date { font-size: 1.5rem; font-weight: bold; color: #333; margin-bottom: 10px; }
+        .day-event { font-size: 0.8rem; color: #FF9800; }
+        
+        /* Форма планування */
+        .planning-form {
+            background: #F5F5F5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: #388E3C; }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #C8E6C9;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        /* Вправи */
+        .exercise-card { 
+            background: #FFF8E1; border-radius: 8px; padding: 20px; margin-bottom: 20px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .exercise-title { 
+            color: #FF8F00; font-size: 1.2rem; margin-bottom: 15px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        .exercise-question { margin-bottom: 15px; color: #333; }
+        .answer-select { 
+            width: 100%; padding: 12px; border: 2px solid #FFECB3; border-radius: 6px; 
+            font-size: 1rem; margin-bottom: 15px; background-color: white; cursor: pointer; 
+        }
+        .answer-select:focus { border-color: #FFC107; outline: none; }
+        
+        .check-btn { 
+            background: #FFC107; color: #333; border: none; padding: 10px 20px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; transition: background 0.3s; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; 
+        }
+        .check-btn:hover { background: #FFB300; }
+        
+        .result-message { 
+            padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; 
+            font-weight: 600; display: none; animation: fadeIn 0.5s ease; 
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-message.correct { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .result-message.incorrect { background: #FFEBEE; color: #c62828; border: 1px solid #FFCDD2; }
+        
+        /* Поради */
+        .tip-box { 
+            background: #FFF3CD; padding: 15px; border-radius: 8px; margin-bottom: 15px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .tip-title { 
+            color: #FF8F00; font-weight: 600; margin-bottom: 10px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        
+        .topic-footer { 
+            text-align: center; padding: 20px; background: #FFF8E1; 
+            border-top: 1px solid #FFECB3; color: #FF8F00; 
+        }
+        .counter { 
+            background: #FFC107; color: #333; padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.9rem; display: inline-block; margin-bottom: 10px; 
+        }
+        .audio-btn { 
+            background: #4CAF50; color: white; border: none; padding: 8px 15px; 
+            border-radius: 20px; cursor: pointer; font-size: 0.9rem; margin-left: 10px; 
+            transition: background 0.3s; 
+        }
+        .audio-btn:hover { background: #388E3C; }
+        
+        /* Фрази для планування */
+        .planning-phrase {
+            background: #E8F5E9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid #C8E6C9;
+        }
+        
+        .planning-phrase:hover {
+            background: #C8E6C9;
+            transform: translateY(-3px);
+        }
+        
+        .phrase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .phrase-polish {
+            font-weight: bold;
+            color: #388E3C;
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-calendar-alt"></i> Temat 20: Plany i organizacja</h1>
+                <p class="subtitle">Umawianie spotkań, plany na przyszłość, organizacja czasu</p>
+                <div class="counter">Temat 20 z 26 | Dział: Komunikacja</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="komunikacja4.html" class="nav-button"><i class="fas fa-arrow-left"></i> Poprzedni temat</a>
+                <a href="history1.html" class="nav-button">Następny temat <i class="fas fa-arrow-right"></i></a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="dialogue-section">
+                        <h2 class="section-title"><i class="fas fa-comments"></i> Umawianie spotkania</h2>
+                        
+                        <div class="dialogue-container">
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar marta">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Marta</div>
+                                    <div class="dialogue-text">
+                                        Cześć Piotr! Co robisz w sobotę?
+                                        <button class="audio-btn" onclick="playAudio('Cześć Piotr! Co robisz w sobotę?')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Привіт, Петре! Що робиш у суботу?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar piotr">
+                                    <i class="fas fa-male" style="color: #388E3C;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Piotr</div>
+                                    <div class="dialogue-text">
+                                        W sobotę mam wolne. Dlaczego pytasz?
+                                        <button class="audio-btn" onclick="playAudio('W sobotę mam wolne. Dlaczego pytasz?')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        У суботу я вільний. Чому питаєш?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar marta">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Marta</div>
+                                    <div class="dialogue-text">
+                                        Chciałabym zaprosić cię do kina. Jest nowy film.
+                                        <button class="audio-btn" onclick="playAudio('Chciałabym zaprosić cię do kina. Jest nowy film.')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Хотіла б запросити тебе в кіно. Є новий фільм.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar piotr">
+                                    <i class="fas fa-male" style="color: #388E3C;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Piotr</div>
+                                    <div class="dialogue-text">
+                                        Świetny pomysł! O której godzinie?
+                                        <button class="audio-btn" onclick="playAudio('Świetny pomysł! O której godzinie?')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Чудова ідея! О котрій годині?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-avatar marta">
+                                    <i class="fas fa-female" style="color: #FF8F00;"></i>
+                                </div>
+                                <div class="dialogue-content">
+                                    <div class="dialogue-name">Marta</div>
+                                    <div class="dialogue-text">
+                                        Może o 18:00? Spotkajmy się przed kinem.
+                                        <button class="audio-btn" onclick="playAudio('Może o 18:00? Spotkajmy się przed kinem.')">
+                                            <i class="fas fa-volume-up"></i> Słuchaj
+                                        </button>
+                                    </div>
+                                    <div class="dialogue-translation">
+                                        Можливо о 18:00? Зустрінемось перед кінотеатром.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="calendar-section">
+                        <h2 class="section-title"><i class="fas fa-calendar-check"></i> Twój plan tygodnia</h2>
+                        
+                        <div class="calendar-container">
+                            <p>Zaplanuj swoje spotkania na ten tydzień:</p>
+                            
+                            <div class="calendar-week">
+                                <div class="calendar-day" onclick="selectDay(this, 'poniedziałek')">
+                                    <div class="day-name">Pon</div>
+                                    <div class="day-date">10</div>
+                                    <div class="day-event">Lekcje polskiego</div>
+                                </div>
+                                
+                                <div class="calendar-day" onclick="selectDay(this, 'wtorek')">
+                                    <div class="day-name">Wto</div>
+                                    <div class="day-date">11</div>
+                                    <div class="day-event">Spotkanie z przyjaciółmi</div>
+                                </div>
+                                
+                                <div class="calendar-day" onclick="selectDay(this, 'środa')">
+                                    <div class="day-name">Śro</div>
+                                    <div class="day-date">12</div>
+                                    <div class="day-event">Wolne</div>
+                                </div>
+                                
+                                <div class="calendar-day" onclick="selectDay(this, 'czwartek')">
+                                    <div class="day-name">Czw</div>
+                                    <div class="day-date">13</div>
+                                    <div class="day-event">Zakupy</div>
+                                </div>
+                                
+                                <div class="calendar-day" onclick="selectDay(this, 'piątek')">
+                                    <div class="day-name">Pią</div>
+                                    <div class="day-date">14</div>
+                                    <div class="day-event">Kino</div>
+                                </div>
+                            </div>
+                            
+                            <div class="planning-form">
+                                <h4><i class="fas fa-plus-circle"></i> Dodaj nowe spotkanie</h4>
+                                <div class="form-group">
+                                    <label class="form-label">Co planujesz?</label>
+                                    <input type="text" class="form-input" id="eventName" placeholder="np. Spotkanie z kolegą">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Kiedy?</label>
+                                    <select class="form-select" id="eventDay">
+                                        <option value="poniedziałek">Poniedziałek</option>
+                                        <option value="wtorek">Wtorek</option>
+                                        <option value="środa">Środa</option>
+                                        <option value="czwartek">Czwartek</option>
+                                        <option value="piątek">Piątek</option>
+                                    </select>
+                                </div>
+                                <button class="check-btn" onclick="addEvent()">
+                                    <i class="fas fa-calendar-plus"></i> Dodaj do kalendarza
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <h3 class="section-title" style="font-size: 1.4rem; margin-top: 30px;"><i class="fas fa-clock"></i> Ćwicz umawianie spotkań</h3>
+                        
+                        <div class="planning-phrase" onclick="playInteractiveAudio('Co robisz w weekend?')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Co robisz w weekend?</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Що робиш на вихідних?</div>
+                        </div>
+                        
+                        <div class="planning-phrase" onclick="playInteractiveAudio('Czy jesteś wolny w piątek wieczorem?')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Czy jesteś wolny w piątek wieczorem?</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Ти вільний у п'ятницю ввечері?</div>
+                        </div>
+                        
+                        <div class="planning-phrase" onclick="playInteractiveAudio('Spotkajmy się o 17:00 w kawiarni.')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Spotkajmy się o 17:00 w kawiarni.</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Зустрінемось о 17:00 в кав'ярні.</div>
+                        </div>
+                        
+                        <div class="planning-phrase" onclick="playInteractiveAudio('Niestety, mam już plany na ten dzień.')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Niestety, mam już plany na ten dzień.</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">На жаль, у мене вже є плани на цей день.</div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1: Umawianie spotkania</h3>
+                            <p class="exercise-question">Chcesz zapytać kolegę, czy jest wolny w sobotę. Co powiesz? (Хочете запитати колегу, чи він вільний у суботу. Що скажете?)</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Czy jesteś wolny w sobotę?">Czy jesteś wolny w sobotę?</option>
+                                <option value="Sobota jest zła.">Sobota jest zła. </option>
+                                <option value="Nie chcę cię widzieć w sobotę.">Nie chcę cię widzieć w sobotę. </option>
+                                <option value="Sobota jest dobra?">Sobota jest dobra? </option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2: Godzina spotkania</h3>
+                            <p class="exercise-question">Umawiasz się na 15:00. Jak to powiesz? (Домовляєтесь на 15:00. Як це сказати?)</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Spotkajmy się o piętnastej.">Spotkajmy się o piętnastej. </option>
+                                <option value="Przyjdź o trzeciej rano.">Przyjdź o trzeciej rano. </option>
+                                <option value="Godzina jest dobra.">Godzina jest dobra. </option>
+                                <option value="Spotkamy się kiedyś.">Spotkamy się kiedyś. </option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3: Odmowa</h3>
+                            <p class="exercise-question">Nie możesz się spotkać, bo masz inne plany. Jak to powiesz grzecznie? (Не можете зустрітися, бо маєте інші плани. Як це сказати ввічливо?)</p>
+                            
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Nie chcę się z tobą spotkać.">Nie chcę się z tobą spotkać.</option>
+                                <option value="Niestety, mam już plany na ten dzień.">Niestety, mam już plany na ten dzień.</option>
+                                <option value="Jesteś głupi.">Jesteś głupi. </option>
+                                <option value="Nie mam czasu na ciebie.">Nie mam czasu na ciebie.</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Przydatne zwroty</h2>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-calendar-day"></i> Umawianie spotkań</div>
+                            <p><strong>"Czy jesteś wolny w...?"</strong> - Ти вільний у...?<br>
+                            <strong>"Co robisz w weekend?"</strong> - Що робиш на вихідних?<br>
+                            <strong>"Chciałbym/chciałabym się spotkać..."</strong> - Хотів би/хотіла б зустрітися...</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-clock"></i> Godziny</div>
+                            <p><strong>"o 15:00"</strong> - о 15:00<br>
+                            <strong>"o ósmej rano"</strong> - о восьмій ранку<br>
+                            <strong>"o szóstej wieczorem"</strong> - о шостій вечора<br>
+                            <strong>"w południe"</strong> - опівдні</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-map-marker-alt"></i> Miejsca spotkań</div>
+                            <p><strong>"w kinie"</strong> - в кінотеатрі<br>
+                            <strong>"w kawiarni"</strong> - в кав'ярні<br>
+                            <strong>"w parku"</strong> - в парку<br>
+                            <strong>"przy dworcu"</strong> - біля вокзалу</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2024 | Temat 20: Plany i organizacja</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "Czy jesteś wolny w sobotę?",
+            2: "Spotkajmy się o piętnastej.",
+            3: "Niestety, mam już plany na ten dzień."
+        };
+        
+        let selectedDay = null;
+        
+        // Функції для календаря
+        function selectDay(element, dayId) {
+            const allDays = document.querySelectorAll('.calendar-day');
+            allDays.forEach(day => day.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedDay = dayId;
+            
+            // Показуємо інформацію про вибраний день
+            const dayNames = {
+                'poniedziałek': 'poniedziałek',
+                'wtorek': 'wtorek',
+                'środa': 'środa',
+                'czwartek': 'czwartek',
+                'piątek': 'piątek'
+            };
+            
+            playAudio(`Wybrałeś ${dayNames[dayId]}. Co planujesz w ten dzień?`);
+        }
+        
+        function addEvent() {
+            const eventName = document.getElementById('eventName').value;
+            const eventDay = document.getElementById('eventDay').value;
+            
+            if (!eventName) {
+                alert('Wpisz nazwę wydarzenia!');
+                return;
+            }
+            
+            const dayNames = {
+                'poniedziałek': 'poniedziałek',
+                'wtorek': 'wtorek',
+                'środa': 'środa',
+                'czwartek': 'czwartek',
+                'piątek': 'piątek'
+            };
+            
+            alert(`Dodano wydarzenie: "${eventName}" na ${dayNames[eventDay]}`);
+            
+            // Очищаємо форму
+            document.getElementById('eventName').value = '';
+            
+            // Відтворюємо фразу
+            playAudio(`Dodałem wydarzenie ${eventName} na ${dayNames[eventDay]}`);
+        }
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Doskonale!`;
+                resultElement.className = 'result-message correct';
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Функція для відтворення аудіо
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'pl-PL';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Twoja przeglądarka nie obsługuje odtwarzania mowy.');
+            }
+        }
+        
+        function playInteractiveAudio(text) {
+            playAudio(text);
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Анімація діалогів при завантаженні
+            const dialogueBubbles = document.querySelectorAll('.dialogue-bubble');
+            dialogueBubbles.forEach(bubble => {
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateY(20px)';
+            });
+            
+            setTimeout(() => {
+                dialogueBubbles.forEach((bubble, index) => {
+                    setTimeout(() => {
+                        bubble.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        bubble.style.opacity = '1';
+                        bubble.style.transform = 'translateY(0)';
+                    }, index * 300);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 23: Kuchnia polska</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8f8f8; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(to right, #d32f2f, #b71c1c); color: white; padding: 30px; border-radius: 15px 15px 0 0; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { opacity: 0.9; margin: 10px 0 20px; }
+        nav { display: flex; justify-content: space-between; padding: 20px; background: #ffebee; }
+        .nav-button { padding: 10px 20px; background: white; border: 2px solid #d32f2f; color: #d32f2f; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; background: white; }
+        @media (max-width: 768px) { .content { grid-template-columns: 1fr; } }
+        .section { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .section-title { color: #d32f2f; border-bottom: 3px solid #ffcdd2; padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; }
+        .dish-card { display: flex; background: #fff3e0; border-radius: 10px; overflow: hidden; margin-bottom: 20px; border-left: 5px solid #d32f2f; }
+        .dish-image { width: 120px; background: #ffccbc; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #d32f2f; }
+        .dish-content { padding: 20px; flex: 1; }
+        .audio-btn { background: #d32f2f; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .fact-box { background: #ffebee; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #d32f2f; }
+        .quiz { background: #fff3e0; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .quiz-option { background: white; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; border: 2px solid #ffecb3; }
+        footer { text-align: center; padding: 20px; background: #ffebee; margin-top: 30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Temat 23: Kuchnia polska</h1>
+        <div class="subtitle">Typowe potrawy i regionalne specjały</div>
+    </header>
+    
+    <nav>
+        <a href="history2.html" class="nav-button">← Poprzedni temat</a>
+        <a href="history4.html" class="nav-button">Następny temat →</a>
+    </nav>
+    
+    <div class="content">
+        <div class="left-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> Podstawy kuchni polskiej</h2>
+                <p>Kuchnia polska charakteryzuje się solidnymi, pożywnymi daniami opartymi na produktach sezonowych. Dominują mięsa wieprzowe i wołowe, kapusta, ziemniaki, grzyby leśne i śmietana.</p>
+                
+                <div class="dish-card">
+                    <div class="dish-image"><i class="fas fa-drumstick-bite"></i></div>
+                    <div class="dish-content">
+                        <h3>Kotlet schabowy</h3>
+                        <p>Panierowany kotlet z wieprzowiny smażony na głębokim tłuszczu. Podawany z gotowanymi ziemniakami i kapustą kiszoną lub surówką z marchwi.</p>
+                        <button class="audio-btn" onclick="playAudio('Kotlet schabowy to panierowany kotlet z wieprzowyny smażony na tłuszczu. Podaje się go z ziemniakami i kapustą kiszoną.')">Słuchaj</button>
+                    </div>
+                </div>
+                
+                <div class="dish-card">
+                    <div class="dish-image"><i class="fas fa-pot-food"></i></div>
+                    <div class="dish-content">
+                        <h3>Bigos</h3>
+                        <p>"Gulasz myśliwski" z kiszonej i świeżej kapusty, różnych mięs, kiełbasy, grzybów i suszonych śliwek. Im dłużej się odgrzewa, tym lepszy.</p>
+                        <button class="audio-btn" onclick="playAudio('Bigos to gulasz z kiszonej kapusty z mięsem, kiełbasą, grzybami i śliwkami. Tradycyjne danie na polskich stołach.')">Słuchaj</button>
+                    </div>
+                </div>
+                
+                <div class="fact-box">
+                    <p><strong>Ciekawostka:</strong> Polska jest największym w UE producentem pieczarek i jednym z największych producentów jabłek w Europie.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Specjały regionalne</h2>
+                
+                <div class="dish-card">
+                    <div class="dish-image"><i class="fas fa-cheese"></i></div>
+                    <div class="dish-content">
+                        <h3>Oscypek (Podhale)</h3>
+                        <p>Wędzony ser owczy z mleka owczego, produkowany wyłącznie na Podhalu. Chroniony certyfikatem UE. Podawany grillowany z żurawiną.</p>
+                    </div>
+                </div>
+                
+                <div class="dish-card">
+                    <div class="dish-image"><i class="fas fa-bread-slice"></i></div>
+                    <div class="dish-content">
+                        <h3>Obwarzanek krakowski (Małopolska)</h3>
+                        <p>Okrągły, pleciony obwarzanek posypany makiem, sezamem lub solą. Symbol Krakowa, sprzedawany z budek na ulicach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Quiz kulinarny</h2>
+                
+                <div class="quiz">
+                    <p><strong>Która z tych potraw jest tradycyjnym daniem wigilijnym?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Karp w galarecie</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Schabowy z ziemniakami</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Golonka z chrzanem</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Żurek z kiełbasą</div>
+                    <div id="quiz-result" style="margin-top: 15px; padding: 10px; border-radius: 6px; display: none;"></div>
+                </div>
+                
+                <div class="quiz">
+                    <p><strong>Jakie są główne składniki "pyry z gzikiem"?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Ziemniaki i twaróg</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Kapusta i groch</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Kasza i grzyby</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Makaron i mięso</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-cookie-bite"></i> Polskie desery</h2>
+                
+                <div class="dish-card" style="background: #fff8e1;">
+                    <div class="dish-image"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="dish-content">
+                        <h3>Sernik</h3>
+                        <p>Tradycyjnie robiony z twarogu (nie serka homogenizowanego). Każdy region ma swoją wersję: wiedeński, królewski, na zimno.</p>
+                    </div>
+                </div>
+                
+                <div class="dish-card" style="background: #fff8e1;">
+                    <div class="dish-image"><i class="fas fa-donut"></i></div>
+                    <div class="dish-content">
+                        <h3>Pączki</h3>
+                        <p>Smażone w tłuszczu drożdżowe bułeczki z nadzieniem z róży lub budyniu. Tradycyjnie jadane w Tłusty Czwartek.</p>
+                    </div>
+                </div>
+                
+                <div class="fact-box">
+                    <p><strong>Statystyka:</strong> Przeciętny Polak zjada rocznie około 100 pączków, a w Tłusty Czwartek sprzedaje się ich ponad 100 milionów!</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-clock"></i> Tradycyjny jadłospis</h2>
+                <p><strong>Śniadanie:</strong> Kanapki z wędliną, serem, pomidorem, herbata</p>
+                <p><strong>Obiad (główne danie):</strong> Zupa + drugie danie mięsne</p>
+                <p><strong>Podwieczorek:</strong> Ciasto lub kanapka</p>
+                <p><strong>Kolacja:</strong> Lżejsze danie, podobne do śniadania</p>
+                <button class="audio-btn" onclick="playAudio('Polacy jedzą cztery posiłki dziennie: śniadanie, obiad jako główne danie, podwieczorek i kolację. Obiad składa się zwykle z zupy i drugiego dania.')" style="width: 100%;">Słuchaj o posiłkach</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Projekt z języka polskiego © 2024 | Temat 23: Kuchnia polska</p>
+        <p>Ostatnia aktualizacja: <span id="date"></span></p>
+    </footer>
+</div>
+
+<script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString('pl-PL');
+    
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pl-PL';
+            utterance.rate = 0.9;
+            speechSynthesis.speak(utterance);
+        }
+    }
+    
+    function checkAnswer(element, type) {
+        const result = document.getElementById('quiz-result');
+        const options = element.parentElement.querySelectorAll('.quiz-option');
+        
+        options.forEach(opt => {
+            opt.style.background = '';
+            opt.style.color = '';
+        });
+        
+        if (type === 'correct') {
+            element.style.background = '#4CAF50';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Poprawnie!</strong>';
+            result.style.background = '#E8F5E9';
+            result.style.color = '#2E7D32';
+            playAudio('Dobrze! Karp w galarecie to tradycyjne danie wigilijne.');
+        } else {
+            element.style.background = '#f44336';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Niepoprawnie. Spróbuj jeszcze raz!</strong>';
+            result.style.background = '#FFEBEE';
+            result.style.color = '#c62828';
+            playAudio('Niepoprawnie. Spróbuj jeszcze raz!');
+        }
+        result.style.display = 'block';
+    }
+    
+    setTimeout(() => {
+        playAudio('Witaj w temacie o kuchni polskiej. Poznasz typowe polskie potrawy i regionalne specjały.');
+    }, 1000);
+</script>
+</body>
+</html>

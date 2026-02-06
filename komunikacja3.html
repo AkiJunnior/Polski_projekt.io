@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 21: W sklepie i restauracji | Projekt z Języka Polskiego</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .topic-page { background-color: #FFFDE7; min-height: 100vh; padding: 20px 0; }
+        .topic-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1); overflow: hidden; margin-bottom: 30px; }
+        .topic-header { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; padding: 30px; text-align: center; }
+        .topic-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .topic-header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; }
+        .topic-nav { display: flex; justify-content: space-between; padding: 20px 30px; background-color: #FFF8E1; border-bottom: 1px solid #FFECB3; }
+        .nav-button { color: #FF8F00; text-decoration: none; padding: 10px 20px; border-radius: 8px; background-color: white; border: 2px solid #FF8F00; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-button:hover { background-color: #FF8F00; color: white; }
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+        
+        .restaurant-section, .shop-section, .practice-section, .tips-section { 
+            background: white; border-radius: 10px; padding: 25px; 
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.05); margin-bottom: 25px; 
+        }
+        .section-title { 
+            color: #FF8F00; font-size: 1.8rem; margin-bottom: 25px; padding-bottom: 15px; 
+            border-bottom: 2px solid #FFF3CD; display: flex; align-items: center; gap: 12px; 
+        }
+        
+        /* Інтерактивне меню ресторану */
+        .menu-container { 
+            background: #FFF8E1; border-radius: 15px; padding: 25px; margin: 25px 0; 
+            border: 3px solid #FFC107; 
+        }
+        .menu-category { margin-bottom: 25px; }
+        .category-title { 
+            font-size: 1.4rem; color: #FF8F00; font-weight: bold; 
+            padding-bottom: 10px; border-bottom: 2px dashed #FFC107; 
+            margin-bottom: 15px; display: flex; align-items: center; gap: 10px; 
+        }
+        .menu-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .menu-item { 
+            background: white; border-radius: 10px; padding: 15px; border: 2px solid #FFECB3; 
+            transition: all 0.3s; cursor: pointer; position: relative; 
+        }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2); }
+        .menu-item.selected { border-color: #4CAF50; background: #F1F8E9; }
+        .item-name { font-weight: bold; color: #333; margin-bottom: 5px; }
+        .item-price { color: #FF8F00; font-weight: bold; }
+        .item-description { font-size: 0.9rem; color: #666; margin-top: 8px; }
+        
+        /* Кошик покупок */
+        .cart-container { 
+            background: #E3F2FD; border-radius: 10px; padding: 20px; margin: 20px 0; 
+            border: 2px solid #2196F3; 
+        }
+        .cart-title { font-size: 1.3rem; color: #1565C0; margin-bottom: 15px; }
+        .cart-items { min-height: 100px; margin-bottom: 15px; }
+        .cart-item { 
+            background: white; padding: 10px; border-radius: 5px; margin-bottom: 8px; 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        .cart-total { 
+            font-weight: bold; font-size: 1.2rem; color: #FF8F00; 
+            padding-top: 15px; border-top: 2px solid #BBDEFB; 
+        }
+        
+        /* Діалог з офіціантом */
+        .waiter-dialogue { 
+            background: #FFF3CD; border-radius: 10px; padding: 20px; margin: 20px 0; 
+            border-left: 4px solid #FFC107; 
+        }
+        .dialogue-line { 
+            margin-bottom: 15px; padding: 10px 15px; border-radius: 8px; 
+            animation: fadeIn 0.5s ease; 
+        }
+        .dialogue-line.waiter { background: white; border: 1px solid #FFECB3; }
+        .dialogue-line.customer { background: #E3F2FD; border: 1px solid #BBDEFB; margin-left: 20px; }
+        .speaker { font-weight: bold; color: #FF8F00; margin-bottom: 5px; }
+        .speaker.customer { color: #2196F3; }
+        
+        /* Вправи */
+        .exercise-card { 
+            background: #FFF8E1; border-radius: 8px; padding: 20px; margin-bottom: 20px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .exercise-title { 
+            color: #FF8F00; font-size: 1.2rem; margin-bottom: 15px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        .exercise-question { margin-bottom: 15px; color: #333; }
+        .answer-select { 
+            width: 100%; padding: 12px; border: 2px solid #FFECB3; border-radius: 6px; 
+            font-size: 1rem; margin-bottom: 15px; background-color: white; cursor: pointer; 
+        }
+        .answer-select:focus { border-color: #FFC107; outline: none; }
+        
+        .check-btn { 
+            background: #FFC107; color: #333; border: none; padding: 10px 20px; border-radius: 6px; 
+            cursor: pointer; font-weight: 600; transition: background 0.3s; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; 
+        }
+        .check-btn:hover { background: #FFB300; }
+        
+        .result-message { 
+            padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; 
+            font-weight: 600; display: none; animation: fadeIn 0.5s ease; 
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-message.correct { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .result-message.incorrect { background: #FFEBEE; color: #c62828; border: 1px solid #FFCDD2; }
+        
+        /* Поради */
+        .tip-box { 
+            background: #FFF3CD; padding: 15px; border-radius: 8px; margin-bottom: 15px; 
+            border-left: 4px solid #FFC107; 
+        }
+        .tip-title { 
+            color: #FF8F00; font-weight: 600; margin-bottom: 10px; 
+            display: flex; align-items: center; gap: 10px; 
+        }
+        
+        .topic-footer { 
+            text-align: center; padding: 20px; background: #FFF8E1; 
+            border-top: 1px solid #FFECB3; color: #FF8F00; 
+        }
+        .counter { 
+            background: #FFC107; color: #333; padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.9rem; display: inline-block; margin-bottom: 10px; 
+        }
+        
+        /* Кнопки аудіо */
+        .audio-btn { 
+            background: #4CAF50; color: white; border: none; padding: 8px 15px; 
+            border-radius: 20px; cursor: pointer; font-size: 0.9rem; margin-left: 10px; 
+            transition: background 0.3s; 
+        }
+        .audio-btn:hover { background: #388E3C; }
+        
+        /* Інтерактивні фрази */
+        .interactive-phrase {
+            background: #FFF8E1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid #FFECB3;
+        }
+        
+        .interactive-phrase:hover {
+            background: #FFECB3;
+            transform: translateY(-3px);
+        }
+        
+        .phrase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .phrase-polish {
+            font-weight: bold;
+            color: #FF8F00;
+        }
+        
+        /* Кнопка додавання до кошика */
+        .add-to-cart-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #388E3C;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="topic-page">
+    <div class="container">
+        <div class="topic-container">
+            <header class="topic-header">
+                <h1><i class="fas fa-shopping-cart"></i> Temat 18: W sklepie i restauracji</h1>
+                <p class="subtitle">Zakupy, zamawianie jedzenia, pytanie o produkty</p>
+                <div class="counter">Temat 18 z 26 | Dział: Komunikacja</div>
+            </header>
+            
+            <nav class="topic-nav">
+                <a href="komunikacja2.html" class="nav-button"><i class="fas fa-arrow-left"></i> Poprzedni temat</a>
+                <a href="komunikacja4.html" class="nav-button">Następny temat <i class="fas fa-arrow-right"></i></a>
+            </nav>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <section class="restaurant-section">
+                        <h2 class="section-title"><i class="fas fa-utensils"></i> W restauracji</h2>
+                        
+                        <div class="menu-container">
+                            <h3><i class="fas fa-book-open"></i> Menu restauracji "Polskie Smaki"</h3>
+                            
+                            <div class="menu-category">
+                                <div class="category-title"><i class="fas fa-soup"></i> Zupy (Супи)</div>
+                                <div class="menu-items">
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'barszcz')">
+                                        <div class="item-name">Barszcz czerwony</div>
+                                        <div class="item-price">15 zł</div>
+                                        <div class="item-description">Традиційний польський буряковий суп</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('barszcz', 'Barszcz czerwony', 15)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'zurek')">
+                                        <div class="item-name">Żurek</div>
+                                        <div class="item-price">18 zł</div>
+                                        <div class="item-description">Суп на житньому заквасі з білою ковбасою</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('zurek', 'Żurek', 18)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'pomidorowa')">
+                                        <div class="item-name">Zupa pomidorowa</div>
+                                        <div class="item-price">14 zł</div>
+                                        <div class="item-description">Томатний суп з локшиною та сметаною</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('pomidorowa', 'Zupa pomidorowa', 14)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-category">
+                                <div class="category-title"><i class="fas fa-drumstick-bite"></i> Dania główne (Основні страви)</div>
+                                <div class="menu-items">
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'schabowy')">
+                                        <div class="item-name">Kotlet schabowy</div>
+                                        <div class="item-price">32 zł</div>
+                                        <div class="item-description">Свиняча котлета з картоплею та салатом</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('schabowy', 'Kotlet schabowy', 32)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'pierogi')">
+                                        <div class="item-name">Pierogi ruskie</div>
+                                        <div class="item-price">28 zł</div>
+                                        <div class="item-description">12 вареників з цибулею та сметаною</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('pierogi', 'Pierogi ruskie', 28)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                    <div class="menu-item" onclick="selectMenuItem(this, 'bigos')">
+                                        <div class="item-name">Bigos</div>
+                                        <div class="item-price">26 zł</div>
+                                        <div class="item-description">Квашена капуста з м'ясом та грибами</div>
+                                        <button class="add-to-cart-btn" onclick="addToCart('bigos', 'Bigos', 26)">
+                                            <i class="fas fa-plus"></i> Dodaj do zamówienia
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cart-container">
+                            <div class="cart-title"><i class="fas fa-receipt"></i> Twoje zamówienie (Ваше замовлення)</div>
+                            <div class="cart-items" id="cartItems">
+                                <p style="color: #999; text-align: center;">Twój koszyk jest pusty (Ваш кошик порожній)</p>
+                            </div>
+                            <div class="cart-total">Razem (Разом): <span id="cartTotal">0</span> zł</div>
+                            <button class="check-btn" onclick="placeOrder()">
+                                <i class="fas fa-check"></i> Zamów i zapłać (Замовити і сплатити)
+                            </button>
+                        </div>
+                        
+                        <h3 class="section-title" style="font-size: 1.4rem; margin-top: 30px;"><i class="fas fa-concierge-bell"></i> Ćwicz zamawianie</h3>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Czy mogę prosić o menu?')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Czy mogę prosić o menu?</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Чи можу попросити меню?</div>
+                        </div>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Poproszę kotlet schabowy.')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Poproszę kotlet schabowy.</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Будь ласка, свинячу котлету.</div>
+                        </div>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Rachunek, proszę.')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Rachunek, proszę.</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Рахунок, будь ласка.</div>
+                        </div>
+                    </section>
+                    
+                    <section class="shop-section">
+                        <h2 class="section-title"><i class="fas fa-store"></i> W sklepie</h2>
+                        
+                        <div class="waiter-dialogue">
+                            <div class="dialogue-line customer">
+                                <div class="speaker customer"><i class="fas fa-user"></i> Klient (Клієнт)</div>
+                                <div>
+                                    Dzień dobry! Szukam świeżego chleba.
+                                    <button class="audio-btn" onclick="playAudio('Dzień dobry! Szukam świeżego chleba.')">
+                                        <i class="fas fa-volume-up"></i> Słuchaj
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-line waiter">
+                                <div class="speaker"><i class="fas fa-user-tie"></i> Ekspedientka (Продавчиня)</div>
+                                <div>
+                                    Oczywiście. Mamy chleb pszenny, żytni i mieszany. Który pan/pani woli?
+                                    <button class="audio-btn" onclick="playAudio('Oczywiście. Mamy chleb pszenny, żytni i mieszany. Który pan/pani woli?')">
+                                        <i class="fas fa-volume-up"></i> Słuchaj
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-line customer">
+                                <div class="speaker customer"><i class="fas fa-user"></i> Klient (Клієнт)</div>
+                                <div>
+                                    Proszę żytni. Ile kosztuje?
+                                    <button class="audio-btn" onclick="playAudio('Proszę żytni. Ile kosztuje?')">
+                                        <i class="fas fa-volume-up"></i> Słuchaj
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="dialogue-line waiter">
+                                <div class="speaker"><i class="fas fa-user-tie"></i> Ekspedientka (Продавчиня)</div>
+                                <div>
+                                    6 złotych. Czy coś jeszcze?
+                                    <button class="audio-btn" onclick="playAudio('6 złotych. Czy coś jeszcze?')">
+                                        <i class="fas fa-volume-up"></i> Słuchaj
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="section-title" style="font-size: 1.4rem; margin-top: 30px;"><i class="fas fa-shopping-basket"></i> Ćwicz zakupy</h3>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Ile kosztuje ten ser?')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Ile kosztuje ten ser?</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Скільки коштує цей сир?</div>
+                        </div>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Gdzie jest mleko?')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Gdzie jest mleko?</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Де молоко?</div>
+                        </div>
+                        
+                        <div class="interactive-phrase" onclick="playInteractiveAudio('Poproszę kilogram jabłek.')">
+                            <div class="phrase-header">
+                                <span class="phrase-polish">Poproszę kilogram jabłek.</span>
+                                <button class="audio-btn">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="dialogue-translation">Будь ласка, кілограм яблук.</div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="right-column">
+                    <section class="practice-section">
+                        <h2 class="section-title"><i class="fas fa-pen-alt"></i> Ćwiczenia</h2>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 1: Zamawianie w restauracji</h3>
+                            <p class="exercise-question">Jak poprosisz o menu w restauracji? (Як попросити меню в ресторані?)</p>
+                            
+                            <select class="answer-select" id="select1">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Daj mi jeść!">Daj mi jeść! (Дай мені їсти!)</option>
+                                <option value="Przynieś menu, proszę.">Przynieś menu, proszę. (Принеси меню, будь ласка.)</option>
+                                <option value="Czy mogę prosić o menu?">Czy mogę prosić o menu? (Чи можу попросити меню?)</option>
+                                <option value="Chcę zjeść!">Chcę zjeść! (Хочу їсти!)</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(1)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result1"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 2: Pytanie o cenę</h3>
+                            <p class="exercise-question">Chcesz zapytać o cenę sera. Co powiesz? (Хочете запитати про ціну сиру. Що скажете?)</p>
+                            
+                            <select class="answer-select" id="select2">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Ile kosztuje ser?">Ile kosztuje ser? (Скільки коштує сир?)</option>
+                                <option value="Daj mi ser!">Daj mi ser! (Дай мені сир!)</option>
+                                <option value="Ser jest drogi?">Ser jest drogi? (Сир дорогий?)</option>
+                                <option value="Kupię ser.">Kupię ser. (Куплю сир.)</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(2)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result2"></div>
+                        </div>
+                        
+                        <div class="exercise-card">
+                            <h3 class="exercise-title"><i class="fas fa-question-circle"></i> Ćwiczenie 3: Płatność</h3>
+                            <p class="exercise-question">Chcesz zapłacić kartą. Jak to powiesz? (Хочете сплатити карткою. Як це сказати?)</p>
+                            
+                            <select class="answer-select" id="select3">
+                                <option value="">-- Wybierz odpowiedź --</option>
+                                <option value="Mam kartę.">Mam kartę. (Маю картку.)</option>
+                                <option value="Zapłacę kartą, proszę.">Zapłacę kartą, proszę. (Сплачу карткою, будь ласка.)</option>
+                                <option value="Weź kartę!">Weź kartę! (Візьми картку!)</option>
+                                <option value="Karta jest dobra.">Karta jest dobra. (Картка хороша.)</option>
+                            </select>
+                            
+                            <button class="check-btn" onclick="checkAnswer(3)">
+                                <i class="fas fa-check"></i> Sprawdź odpowiedź
+                            </button>
+                            
+                            <div class="result-message" id="result3"></div>
+                        </div>
+                    </section>
+                    
+                    <section class="tips-section">
+                        <h2 class="section-title"><i class="fas fa-lightbulb"></i> Przydatne zwroty</h2>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-utensil-spoon"></i> W restauracji</div>
+                            <p><strong>"Czy mogę prosić o menu?"</strong> - Чи можу попросити меню?<br>
+                            <strong>"Poproszę..."</strong> - Будь ласка, дайте...<br>
+                            <strong>"Rachunek, proszę."</strong> - Рахунок, будь ласка.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-shopping-basket"></i> W sklepie</div>
+                            <p><strong>"Gdzie mogę znaleźć...?"</strong> - Де можу знайти...?<br>
+                            <strong>"Ile to kosztuje?"</strong> - Скільки це коштує?<br>
+                            <strong>"Czy ma pan/pani...?"</strong> - Чи є у вас...?</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-balance-scale"></i> Waga i ilość</div>
+                            <p><strong>"kilogram"</strong> - кілограм<br>
+                            <strong>"pół kilo"</strong> - півкіло<br>
+                            <strong>"litr"</strong> - літр<br>
+                            <strong>"sztuka"</strong> - штука</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title"><i class="fas fa-money-bill-wave"></i> Płatności</div>
+                            <p><strong>"gotówka"</strong> - готівка<br>
+                            <strong>"karta"</strong> - картка<br>
+                            <strong>"paragon"</strong> - чек<br>
+                            <strong>"reszta"</strong> - решта</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="topic-footer">
+                <p>Projekt z języka polskiego © 2024 | Temat 21: W sklepie i restauracji</p>
+                <p>Ostatnia aktualizacja: <span id="current-date"></span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Кошик для замовлень
+        let shoppingCart = [];
+        let cartTotal = 0;
+        
+        // Правильні відповіді
+        const correctAnswers = {
+            1: "Czy mogę prosić o menu?",
+            2: "Ile kosztuje ser?",
+            3: "Zapłacę kartą, proszę."
+        };
+        
+        // Функції для роботи з меню
+        function selectMenuItem(element, itemId) {
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => item.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            // Озвучуємо назву страви
+            const itemName = element.querySelector('.item-name').textContent;
+            playAudio(itemName);
+        }
+        
+        function addToCart(itemId, itemName, price) {
+            event.stopPropagation();
+            
+            // Додаємо до кошика
+            shoppingCart.push({
+                id: itemId,
+                name: itemName,
+                price: price
+            });
+            
+            cartTotal += price;
+            updateCartDisplay();
+            
+            // Озвучуємо додавання
+            playAudio(`Dodałem ${itemName} do zamówienia`);
+        }
+        
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            if (shoppingCart.length === 0) {
+                cartItems.innerHTML = '<p style="color: #999; text-align: center;">Twój koszyk jest pusty (Ваш кошик порожній)</p>';
+            } else {
+                cartItems.innerHTML = '';
+                shoppingCart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                        <span>${item.name}</span>
+                        <span>${item.price} zł 
+                            <button onclick="removeFromCart(${index})" style="background: #f44336; color: white; border: none; border-radius: 3px; padding: 2px 6px; margin-left: 5px; cursor: pointer;">X</button>
+                        </span>
+                    `;
+                    cartItems.appendChild(itemDiv);
+                });
+            }
+            
+            cartTotalElement.textContent = cartTotal;
+        }
+        
+        function removeFromCart(index) {
+            const itemName = shoppingCart[index].name;
+            cartTotal -= shoppingCart[index].price;
+            shoppingCart.splice(index, 1);
+            updateCartDisplay();
+            
+            // Озвучуємо видалення
+            playAudio(`Usunąłem ${itemName} z zamówienia`);
+        }
+        
+        function placeOrder() {
+            if (shoppingCart.length === 0) {
+                playAudio('Twój koszyk jest pusty! Dodaj coś do zamówienia.');
+                alert('Twój koszyk jest pusty! Dodaj coś do zamówienia.');
+                return;
+            }
+            
+            const orderList = shoppingCart.map(item => item.name).join(', ');
+            playAudio(`Zamówienie złożone! Zamówiłeś: ${orderList}. Razem do zapłaty: ${cartTotal} złotych. Dziękujemy!`);
+            
+            alert(`Zamówienie złożone!\n\n${shoppingCart.map(item => `${item.name} - ${item.price} zł`).join('\n')}\n\nRazem: ${cartTotal} zł\n\nDziękujemy!`);
+            
+            // Очищаємо кошик
+            shoppingCart = [];
+            cartTotal = 0;
+            updateCartDisplay();
+            
+            // Очищаємо вибір
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => item.classList.remove('selected'));
+        }
+        
+        // Функція для перевірки відповіді
+        function checkAnswer(exerciseNum) {
+            const selectElement = document.getElementById(`select${exerciseNum}`);
+            const resultElement = document.getElementById(`result${exerciseNum}`);
+            
+            const userAnswer = selectElement.value;
+            const isCorrect = userAnswer === correctAnswers[exerciseNum];
+            
+            if (userAnswer === "") {
+                resultElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Wybierz odpowiedź przed sprawdzeniem!';
+                resultElement.className = 'result-message incorrect';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (isCorrect) {
+                resultElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>Poprawnie!</strong> Doskonale!`;
+                resultElement.className = 'result-message correct';
+                playAudio('Dobra odpowiedź!');
+            } else {
+                resultElement.innerHTML = `<i class="fas fa-times-circle"></i> <strong>Niepoprawnie.</strong> Spróbuj jeszcze raz!`;
+                resultElement.className = 'result-message incorrect';
+                playAudio('Niepoprawna odpowiedź. Spróbuj jeszcze raz.');
+            }
+            
+            resultElement.style.display = 'block';
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Функція для відтворення аудіо
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'pl-PL';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            } else {
+                console.log('Text to speech not supported');
+            }
+        }
+        
+        function playInteractiveAudio(text) {
+            playAudio(text);
+        }
+        
+        // Встановлення поточної дати
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('pl-PL', options);
+            
+            // Додаємо обробники подій для випадаючих меню
+            const selects = document.querySelectorAll('.answer-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const resultId = this.id.replace('select', 'result');
+                    const resultElement = document.getElementById(resultId);
+                    if (resultElement) {
+                        resultElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Анімація меню
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 + index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

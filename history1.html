@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temat 21: Polska - podstawowe informacje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f3e5f5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(to right, #7b1fa2, #4a0072); color: white; padding: 30px; border-radius: 15px 15px 0 0; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { opacity: 0.9; margin: 10px 0 20px; }
+        nav { display: flex; justify-content: space-between; padding: 20px; background: #e1bee7; }
+        .nav-button { padding: 10px 20px; background: white; border: 2px solid #7b1fa2; color: #7b1fa2; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .content { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 30px; background: white; }
+        @media (max-width: 768px) { .content { grid-template-columns: 1fr; } }
+        .section { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .section-title { color: #7b1fa2; border-bottom: 3px solid #e1bee7; padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; }
+        .info-block { background: #f3e5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #7b1fa2; }
+        .audio-btn { background: #7b1fa2; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin-top: 10px; cursor: pointer; }
+        .fact-box { background: #e1bee7; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #7b1fa2; }
+        .quiz { background: #f3e5f5; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .quiz-option { background: white; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; border: 2px solid #e1bee7; }
+        .map-container { height: 300px; background: #c8e6c9; border-radius: 10px; margin: 20px 0; position: relative; }
+        .city-marker { position: absolute; background: #7b1fa2; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+        .symbol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .symbol-card { background: white; padding: 15px; border-radius: 8px; border: 2px solid #e1bee7; text-align: center; }
+        footer { text-align: center; padding: 20px; background: #e1bee7; margin-top: 30px; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .data-table td { padding: 12px; border-bottom: 1px solid #e1bee7; }
+        .data-table tr:hover { background: #f3e5f5; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Temat 21: Polska - podstawowe informacje</h1>
+        <div class="subtitle">Geografia, symbole narodowe, najważniejsze miasta</div>
+        <div style="background: #e1bee7; color: #4a0072; display: inline-block; padding: 5px 15px; border-radius: 20px; margin-top: 10px;">
+            Temat 21 z 26 | Dział: Kultura i wiedza o Polsce
+        </div>
+    </header>
+    
+    <nav>
+        <a href="komunikacja5.html" class="nav-button">← Poprzedni dział</a>
+        <a href="history2.html" class="nav-button">Następny temat →</a>
+    </nav>
+    
+    <div class="content">
+        <div class="left-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-globe-europe"></i> Podstawowe informacje</h2>
+                
+                <div class="info-block">
+                    <h3>Położenie geograficzne</h3>
+                    <p>Polska leży w <strong>Europie Środkowej</strong> między 49° a 55° szerokości geograficznej północnej.</p>
+                    <p><strong>Graniczy z 7 państwami:</strong> Niemcy, Czechy, Słowacja, Ukraina, Białoruś, Litwa, Rosja (obwód królewiecki).</p>
+                    <p>Od północy dostęp do <strong>Morza Bałtyckiego</strong> (440 km linii brzegowej).</p>
+                    <button class="audio-btn" onclick="playAudio('Polska leży w Europie Środkowej i graniczy z siedmioma państwami: Niemcami, Czechami, Słowacją, Ukrainą, Białorusią, Litwą i Rosją. Od północy ma dostęp do Morza Bałtyckiego.')">Słuchaj</button>
+                </div>
+                
+                <div class="info-block">
+                    <h3>Stolica i największe miasta</h3>
+                    <p><strong>Warszawa</strong> - stolica od 1596 roku. 1,7 mln mieszkańców, aglomeracja 3 mln.</p>
+                    <p><strong>Kraków</strong> - dawna stolica, drugie co do wielkości miasto (770 tys.). Stare Miasto UNESCO.</p>
+                    <p><strong>Łódź</strong> - trzecie miasto (670 tys.), historyczne centrum przemysłu włókienniczego.</p>
+                    
+                    <div class="fact-box">
+                        <p><strong>Ciekawostka:</strong> Warszawa została zniszczona w 85% podczas II wojny światowej. Stare Miasto odbudowano na podstawie obrazów Canaletta.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Najważniejsze miasta</h2>
+                
+                <div class="map-container">
+                    <div class="city-marker" style="top: 40%; left: 45%;" onclick="showCity('Warszawa')">Warszawa</div>
+                    <div class="city-marker" style="top: 55%; left: 35%;" onclick="showCity('Kraków')">Kraków</div>
+                    <div class="city-marker" style="top: 30%; left: 25%;" onclick="showCity('Gdańsk')">Gdańsk</div>
+                    <div class="city-marker" style="top: 60%; left: 25%;" onclick="showCity('Wrocław')">Wrocław</div>
+                    <div class="city-marker" style="top: 45%; left: 15%;" onclick="showCity('Poznań')">Poznań</div>
+                </div>
+                
+                <div id="city-info" style="padding: 15px; background: #f3e5f5; border-radius: 8px; margin-top: 15px; display: none;"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-flag"></i> Symbole narodowe</h2>
+                
+                <div class="symbol-grid">
+                    <div class="symbol-card">
+                        <h4>Flaga</h4>
+                        <p>Biało-czerwona, przyjęta 1 sierpnia 1919 roku. Biały - czystość, czerwony - odwaga.</p>
+                    </div>
+                    <div class="symbol-card">
+                        <h4>Godło</h4>
+                        <p>Biały orzeł w złotej koronie na czerwonym tle. Symbol od czasów Piastów.</p>
+                    </div>
+                    <div class="symbol-card">
+                        <h4>Hymn</h4>
+                        <p>"Mazurek Dąbrowskiego" - autor Józef Wybicki (1797). Oficjalnie od 1927 roku.</p>
+                    </div>
+                    <div class="symbol-card">
+                        <h4>Waluta</h4>
+                        <p>Złoty (PLN) = 100 groszy. W obiegu od 1924 roku po reformie Grabskiego.</p>
+                    </div>
+                </div>
+                
+                <button class="audio-btn" onclick="playAudio('Symbole narodowe Polski: biało-czerwona flaga, biały orzeł w koronie jako godło, hymn Mazurek Dąbrowskiego i waluta złoty.')" style="width: 100%;">Słuchaj o symbolach</button>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Sprawdź wiedzę</h2>
+                
+                <div class="quiz">
+                    <p><strong>Jakie miasto jest stolicą Polski?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Warszawa</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Kraków</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Gdańsk</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Poznań</div>
+                    <div id="quiz-result" style="margin-top: 15px; padding: 10px; border-radius: 6px; display: none;"></div>
+                </div>
+                
+                <div class="quiz">
+                    <p><strong>Z iloma państwami graniczy Polska?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">7</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">6</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">8</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">5</div>
+                </div>
+                
+                <div class="quiz">
+                    <p><strong>Jakie kolory ma flaga Polski?</strong></p>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'correct')">Biały i czerwony</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Czerwony i niebieski</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Biały i zielony</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'wrong')">Żółty i czerwony</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Podstawowe dane</h2>
+                
+                <table class="data-table">
+                    <tr><td><strong>Pełna nazwa</strong></td><td>Rzeczpospolita Polska</td></tr>
+                    <tr><td><strong>Stolica</strong></td><td>Warszawa</td></tr>
+                    <tr><td><strong>Język urzędowy</strong></td><td>Polski</td></tr>
+                    <tr><td><strong>Waluta</strong></td><td>Złoty (PLN)</td></tr>
+                    <tr><td><strong>Powierzchnia</strong></td><td>312 696 km² (69. na świecie)</td></tr>
+                    <tr><td><strong>Ludność</strong></td><td>38 mln (37. na świecie)</td></tr>
+                    <tr><td><strong>Ustrój</strong></td><td>Republika parlamentarna</td></tr>
+                    <tr><td><strong>Prezydent</strong></td><td>Andrzej Duda</td></tr>
+                    <tr><td><strong>Premier</strong></td><td>Donald Tusk</td></tr>
+                    <tr><td><strong>Unia Europejska</strong></td><td>Członek od 2004 roku</td></tr>
+                    <tr><td><strong>NATO</strong></td><td>Członek od 1999 roku</td></tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-mountain"></i> Geografia</h2>
+                <p><strong>Najwyższy szczyt:</strong> Rysy (2499 m n.p.m.) w Tatrach</p>
+                <p><strong>Najdłuższa rzeka:</strong> Wisła (1047 km)</p>
+                <p><strong>Największe jezioro:</strong> Śniardwy (113,4 km²)</p>
+                <p><strong>Podział administracyjny:</strong> 16 województw</p>
+                <p><strong>Największe województwo:</strong> Mazowieckie (35 558 km²)</p>
+                
+                <div class="fact-box">
+                    <p><strong>Statystyka:</strong> Polska ma 23 parki narodowe. Białowieski Park Narodowy to jedyny w Polsce obiekt przyrodniczy na liście UNESCO.</p>
+                </div>
+                
+                <button class="audio-btn" onclick="playAudio('Polska ma powierzchnię 312 tysięcy kilometrów kwadratowych, 38 milionów mieszkańców. Najwyższy szczyt to Rysy, najdłuższa rzeka to Wisła. Jest 16 województw.')" style="width: 100%;">Słuchaj danych</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Projekt z języka polskiego © 2024 | Temat 21: Polska - podstawowe informacje</p>
+        <p>Ostatnia aktualizacja: <span id="date"></span></p>
+    </footer>
+</div>
+
+<script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString('pl-PL');
+    
+    // Dane o miastach
+    const cities = {
+        'Warszawa': {
+            name: 'Warszawa',
+            desc: 'Stolica Polski od 1596 roku. 1,7 mln mieszkańców. Ważne zabytki: Pałac Kultury, Stare Miasto (UNESCO), Łazienki Królewskie.',
+            audio: 'Warszawa jest stolicą Polski od 1596 roku. Ma 1,7 miliona mieszkańców. Ważne zabytki to Pałac Kultury i Nauki, Stare Miasto wpisane na listę UNESCO i Łazienki Królewskie.'
+        },
+        'Kraków': {
+            name: 'Kraków',
+            desc: 'Dawna stolica (do 1596). 770 tys. mieszkańców. Stare Miasto UNESCO, Wawel, Sukiennice, Kościół Mariacki.',
+            audio: 'Kraków to dawna stolica Polski. Ma 770 tysięcy mieszkańców. Stare Miasto jest na liście UNESCO. Ważne zabytki to Zamek Królewski na Wawelu, Sukiennice i Kościół Mariacki.'
+        },
+        'Gdańsk': {
+            name: 'Gdańsk',
+            desc: 'Główne miasto nad Bałtykiem. 470 tys. mieszkańców. Historyczne miasto hanzeatyckie, Stocznia Gdańska.',
+            audio: 'Gdańsk to główne miasto nad Morzem Bałtyckim. Ma 470 tysięcy mieszkańców. To historyczne miasto hanzeatyckie. Stocznia Gdańska to miejsce powstania Solidarności.'
+        },
+        'Wrocław': {
+            name: 'Wrocław',
+            desc: 'Miasto mostów i krasnali. 640 tys. mieszkańców. Ostrów Tumski, Hala Stulecia (UNESCO).',
+            audio: 'Wrocław to miasto mostów i krasnali. Ma 640 tysięcy mieszkańców. Ważne miejsca to Ostrów Tumski i Hala Stulecia na liście UNESCO.'
+        },
+        'Poznań': {
+            name: 'Poznań',
+            desc: 'Miasto rogali świętomarcińskich. 530 tys. mieszkańców. Stary Rynek, koziołki na ratuszu.',
+            audio: 'Poznań to miasto rogali świętomarcińskich. Ma 530 tysięcy mieszkańców. Na rynku są koziołki, które bodą się codziennie w południe.'
+        }
+    };
+    
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pl-PL';
+            utterance.rate = 0.9;
+            speechSynthesis.speak(utterance);
+        }
+    }
+    
+    function showCity(cityName) {
+        const city = cities[cityName];
+        const info = document.getElementById('city-info');
+        info.innerHTML = `<h4>${city.name}</h4><p>${city.desc}</p><button class="audio-btn" onclick="playAudio('${city.audio}')">Słuchaj o mieście</button>`;
+        info.style.display = 'block';
+    }
+    
+    function checkAnswer(element, type) {
+        const result = document.getElementById('quiz-result');
+        const options = element.parentElement.querySelectorAll('.quiz-option');
+        
+        options.forEach(opt => {
+            opt.style.background = '';
+            opt.style.color = '';
+        });
+        
+        if (type === 'correct') {
+            element.style.background = '#4CAF50';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Poprawnie!</strong>';
+            result.style.background = '#E8F5E9';
+            result.style.color = '#2E7D32';
+            playAudio('Bardzo dobrze! To prawidłowa odpowiedź.');
+        } else {
+            element.style.background = '#f44336';
+            element.style.color = 'white';
+            result.innerHTML = '<strong>Niepoprawnie. Spróbuj jeszcze raz!</strong>';
+            result.style.background = '#FFEBEE';
+            result.style.color = '#c62828';
+            playAudio('Niestety, to nie jest prawidłowa odpowiedź. Spróbuj jeszcze raz!');
+        }
+        result.style.display = 'block';
+    }
+    
+    setTimeout(() => {
+        playAudio('Witaj w temacie o Polsce. Poznasz podstawowe informacje o geografii, symbolach narodowych i najważniejszych miastach Polski.');
+    }, 1000);
+</script>
+</body>
+</html>
